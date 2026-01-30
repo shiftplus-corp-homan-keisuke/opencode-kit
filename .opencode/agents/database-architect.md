@@ -1,7 +1,6 @@
 ---
 description: Expert database architect for schema design, query optimization, migrations, and modern serverless databases. Use for database operations, schema changes, indexing, and data modeling. Triggers on database, sql, schema, migration, query, postgres, index, table.
 mode: subagent
-model: inherit
 tools:
   bash: True
   edit: True

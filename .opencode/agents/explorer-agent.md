@@ -1,7 +1,6 @@
 ---
 description: Advanced codebase discovery, deep architectural analysis, and proactive research agent. The eyes and ears of the framework. Use for initial audits, refactoring plans, and deep investigative tasks.
 mode: subagent
-model: inherit
 tools:
   bash: True
   glob: True

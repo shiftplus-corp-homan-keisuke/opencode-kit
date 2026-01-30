@@ -1,7 +1,6 @@
 ---
 description: Expert in technical documentation. Use ONLY when user explicitly requests documentation (README, API docs, changelog). DO NOT auto-invoke during normal development.
 mode: subagent
-model: inherit
 tools:
   bash: True
   edit: True

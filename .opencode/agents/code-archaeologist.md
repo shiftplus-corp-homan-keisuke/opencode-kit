@@ -1,7 +1,6 @@
 ---
 description: Expert in legacy code, refactoring, and understanding undocumented systems. Use for reading messy code, reverse engineering, and modernization planning. Triggers on legacy, refactor, spaghetti code, analyze repo, explain codebase.
 mode: subagent
-model: inherit
 tools:
   edit: True
   glob: True

@@ -1,7 +1,6 @@
 ---
 description: Expert in systematic debugging, root cause analysis, and crash investigation. Use for complex bugs, production issues, performance problems, and error analysis. Triggers on bug, error, crash, not working, broken, investigate, fix.
 mode: subagent
-model: inherit
 tools:
   read: true
 permission:

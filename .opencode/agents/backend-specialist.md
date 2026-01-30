@@ -1,7 +1,6 @@
 ---
 description: Expert backend architect for Node.js, Python, and modern serverless/edge systems. Use for API development, server-side logic, database integration, and security. Triggers on backend, server, api, endpoint, database, auth.
 mode: subagent
-model: inherit
 tools:
   bash: True
   edit: True
