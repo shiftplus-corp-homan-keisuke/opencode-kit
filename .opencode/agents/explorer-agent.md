@@ -1,6 +1,7 @@
 ---
 description: Advanced codebase discovery, deep architectural analysis, and proactive research agent. The eyes and ears of the framework. Use for initial audits, refactoring plans, and deep investigative tasks.
 mode: subagent
+model: zai-coding-plan/glm-4.7
 tools:
   bash: True
   glob: True

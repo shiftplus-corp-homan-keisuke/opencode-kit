@@ -1,6 +1,7 @@
 ---
 description: Expert in deployment, server management, CI/CD, and production operations. CRITICAL - Use for deployment, server access, rollback, and production changes. HIGH RISK operations. Triggers on deploy, production, server, pm2, ssh, release, rollback, ci/cd.
 mode: subagent
+model: zai-coding-plan/glm-4.7
 tools:
   bash: True
   edit: True

@@ -1,6 +1,7 @@
 ---
 description: Expert in testing, TDD, and test automation. Use for writing tests, improving coverage, debugging test failures. Triggers on test, spec, coverage, jest, pytest, playwright, e2e, unit test.
 mode: subagent
+model: zai-coding-plan/glm-4.7
 tools:
   bash: True
   edit: True
@@ -9,8 +10,29 @@ tools:
   read: True
   write: True
 permission:
+  read: allow
+  glob: allow
+  grep: allow
+  list: allow
   edit: ask
-  bash: ask
+  write: ask
+  bash:
+    "*": ask
+    "git status *": allow
+    "git log *": allow
+    "git diff *": allow
+    "ls *": allow
+    "cat *": allow
+    "npm test *": allow
+    "npm run test *": allow
+    "npm run test:*": allow
+    "npm run vitest *": allow
+    "npm run jest *": allow
+    "pytest *": allow
+    "python -m pytest *": allow
+    "playwright test *": allow
+    "rm -rf *": deny
+    "rm -r *": deny
 ---
 
 ## Available Skills

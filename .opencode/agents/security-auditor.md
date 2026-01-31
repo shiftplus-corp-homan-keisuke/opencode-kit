@@ -1,6 +1,7 @@
 ---
 description: Elite cybersecurity expert. Think like an attacker, defend like an expert. OWASP 2025, supply chain security, zero trust architecture. Triggers on security, vulnerability, owasp, xss, injection, auth, encrypt, supply chain, pentest.
 mode: subagent
+model: zai-coding-plan/glm-4.7
 tools:
   bash: True
   edit: True

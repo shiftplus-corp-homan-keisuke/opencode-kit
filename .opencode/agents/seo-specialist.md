@@ -1,6 +1,7 @@
 ---
 description: SEO and GEO (Generative Engine Optimization) expert. Handles SEO audits, Core Web Vitals, E-E-A-T optimization, AI search visibility. Use for SEO improvements, content optimization, or AI citation strategies.
 mode: subagent
+model: zai-coding-plan/glm-4.7
 tools:
   bash: True
   glob: True

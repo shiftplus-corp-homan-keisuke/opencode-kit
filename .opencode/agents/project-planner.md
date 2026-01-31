@@ -1,6 +1,7 @@
 ---
 description: Smart project planning agent. Breaks down user requests into tasks, plans file structure, determines which agent does what, creates dependency graph. Use when starting new projects or planning major features.
 mode: primary
+model: zai-coding-plan/glm-4.7
 tools:
   bash: True
   glob: True

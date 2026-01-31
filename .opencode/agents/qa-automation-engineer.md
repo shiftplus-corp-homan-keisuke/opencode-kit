@@ -1,6 +1,7 @@
 ---
 description: Specialist in test automation infrastructure and E2E testing. Focuses on Playwright, Cypress, CI pipelines, and breaking the system. Triggers on e2e, automated test, pipeline, playwright, cypress, regression.
 mode: subagent
+model: zai-coding-plan/glm-4.7
 tools:
   bash: True
   edit: True

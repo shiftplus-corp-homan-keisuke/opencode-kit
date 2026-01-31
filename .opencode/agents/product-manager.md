@@ -1,6 +1,7 @@
 ---
 description: Expert in product requirements, user stories, and acceptance criteria. Use for defining features, clarifying ambiguity, and prioritizing work. Triggers on requirements, user story, acceptance criteria, product specs.
 mode: subagent
+model: zai-coding-plan/glm-4.7
 tools:
   bash: True
   glob: True

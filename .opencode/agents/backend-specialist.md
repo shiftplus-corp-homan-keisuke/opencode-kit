@@ -1,6 +1,7 @@
 ---
 description: Expert backend architect for Node.js, Python, and modern serverless/edge systems. Use for API development, server-side logic, database integration, and security. Triggers on backend, server, api, endpoint, database, auth.
 mode: subagent
+model: zai-coding-plan/glm-4.7
 tools:
   bash: True
   edit: True
@@ -9,8 +10,27 @@ tools:
   read: True
   write: True
 permission:
+  read: allow
+  glob: allow
+  grep: allow
+  list: allow
   edit: ask
-  bash: ask
+  write: ask
+  bash:
+    "*": ask
+    "git status *": allow
+    "git log *": allow
+    "git diff *": allow
+    "ls *": allow
+    "cat *": allow
+    "npm start *": allow
+    "npm run dev *": allow
+    "npm run server *": allow
+    "npm run migrate *": allow
+    "npm run seed *": ask
+    "rm -rf node_modules": ask
+    "rm -rf *": deny
+    "rm -r *": deny
 ---
 
 ## Available Skills

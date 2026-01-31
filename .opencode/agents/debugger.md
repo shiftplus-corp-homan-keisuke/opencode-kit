@@ -1,10 +1,29 @@
 ---
 description: Expert in systematic debugging, root cause analysis, and crash investigation. Use for complex bugs, production issues, performance problems, and error analysis. Triggers on bug, error, crash, not working, broken, investigate, fix.
 mode: subagent
+model: zai-coding-plan/glm-4.7
 tools:
   read: true
 permission:
-  bash: ask
+  read: allow
+  glob: allow
+  grep: allow
+  list: allow
+  bash:
+    "*": ask
+    "git status *": allow
+    "git log *": allow
+    "git diff *": allow
+    "git show *": allow
+    "git blame *": allow
+    "ls *": allow
+    "cat *": allow
+    "grep *": allow
+    "npm run lint *": allow
+    "npm run typecheck *": allow
+    "npm run format:check *": allow
+    "python -m pylint *": allow
+    "rm -rf *": deny
 ---
 
 ## Available Skills
