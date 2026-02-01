@@ -9,9 +9,144 @@ tools:
   grep: True
   read: True
   write: True
-permission:
+  permission:
   edit: ask
-  bash: ask
+  bash:
+    "*": deny
+    "npm *": allow
+    "pnpm *": allow
+    "yarn *": allow
+    "bun *": allow
+    "python *": allow
+    "python3 *": allow
+    "pip *": allow
+    "pip3 *": allow
+    "git status": allow
+    "git diff": allow
+    "git log": allow
+    "git show": allow
+    "git add": allow
+    "git commit": allow
+    "git push": allow
+    "git pull": allow
+    "git fetch": allow
+    "git branch": allow
+    "git checkout": allow
+    "git switch": allow
+    "git stash": allow
+    "git reset": allow
+    "git restore": allow
+    "ls": allow
+    "ll": allow
+    "la": allow
+    "cat": allow
+    "head": allow
+    "tail": allow
+    "less": allow
+    "grep *": allow
+    "find *": allow
+    "mkdir *": allow
+    "mkdir -p *": allow
+    "touch *": allow
+    "cp *": allow
+    "mv *": allow
+    "echo *": allow
+    "printf *": allow
+    "jq *": allow
+    "curl *": allow
+    "wget *": allow
+    "which *": allow
+    "whereis *": allow
+    "type *": allow
+    "file *": allow
+    "stat *": allow
+    "wc *": allow
+    "sort *": allow
+    "uniq *": allow
+    "cut *": allow
+    "awk *": allow
+    "sed *": allow
+    "tr *": allow
+    "date *": allow
+    "whoami": allow
+    "id": allow
+    "pwd": allow
+    "cd *": allow
+    "tree *": allow
+    "rg *": allow
+    "fd *": allow
+    "bat *": allow
+    "code *": allow
+    "nvim *": allow
+    "vim *": allow
+    "vi *": allow
+    "nano *": allow
+    "sh *": allow
+    "bash *": allow
+    "zsh *": allow
+    "fish *": allow
+    "make *": allow
+    "cargo *": allow
+    "go *": allow
+    "rustc *": allow
+    "node *": allow
+    "npx *": allow
+    "docker ps": allow
+    "docker images": allow
+    "docker build *": allow
+    "docker compose *": allow
+    "docker-compose *": allow
+    "docker run *": allow
+    "docker exec *": allow
+    "docker logs *": allow
+    "docker inspect *": allow
+    "docker network *": allow
+    "docker volume *": allow
+    "pm2 *": allow
+    "pm2 restart *": allow
+    "pm2 stop *": allow
+    "pm2 start *": allow
+    "pm2 delete *": ask
+    "pm2 flush": allow
+    "pm2 monit": allow
+    "pm2 logs *": allow
+    "systemctl status": allow
+    "systemctl start": allow
+    "systemctl stop": allow
+    "systemctl restart": allow
+    "systemctl reload": allow
+    "service *": allow
+    "ps *": allow
+    "top": allow
+    "htop": allow
+    "pgrep *": allow
+    "pidof *": allow
+    "lsof *": allow
+    "netstat *": allow
+    "ss *": allow
+    "rm -rf *": deny
+    "rm -r *": deny
+    "rm *": ask
+    "rmdir *": ask
+    "git push --force *": deny
+    "git clean -fd *": deny
+    "docker kill *": ask
+    "docker stop *": allow
+    "docker restart *": allow
+    "pkill *": ask
+    "kill *": ask
+    "killall *": ask
+    "shutdown *": deny
+    "reboot": ask
+    "poweroff": deny
+    "init 0": deny
+    "telinit 0": deny
+    "halt": deny
+    "chmod -R *": ask
+    "chown -R *": ask
+    "dd *": deny
+    "> *": deny
+    "sudo *": ask
 ---
 
 ## Available Skills
