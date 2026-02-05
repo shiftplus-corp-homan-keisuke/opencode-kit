@@ -33,7 +33,8 @@ Markdown対応で
 
 **期待される出力 / Expected Output**:
 ```markdown
-✅ Plan created: docs/PLAN-nextjs-blog.md
+✅ Plan created: ./specs/nextjs-blog/nextjs-blog-plan.md
+✅ Task list created: ./specs/nextjs-blog/nextjs-blog-task.md
 
 Next steps:
 - Review the plan

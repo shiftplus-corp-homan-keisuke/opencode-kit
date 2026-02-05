@@ -1,7 +1,7 @@
 # OpenCode ドキュメントインデックス
 # OpenCode Documentation Index
 
-**最終更新**: 2026-01-31
+**最終更新**: 2026-02-06
 
 ---
 
@@ -64,7 +64,7 @@ This project includes comprehensive documentation created after OpenCode migrati
 
 **内容 / Contents**:
 - OpenCode TUI の基本
-- 全11コマンドの詳細
+- 全12コマンドの詳細
 - エージェントの使い方
 - スキルシステムの説明
 - 実践的なワークフロー
@@ -93,7 +93,7 @@ This project includes comprehensive documentation created after OpenCode migrati
 - よく使うコマンド一覧
 - よく使うエージェント一覧
 - キーボードショートカット
-- 主なスキル（47個）
+- 主なスキル（48個）
 - 典型的なワークフロー
 - 便利な例
 - よくある問題

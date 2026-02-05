@@ -8,9 +8,9 @@ You are now in PLANNING MODE. Create a project plan for the given task.
 
 ## 🔴 CRITICAL RULES
 
-1. **NO CODE WRITING** - This command creates plan file only
+1. **NO CODE WRITING** - This command creates plan + task list only
 2. **Socratic Gate** - Ask clarifying questions before planning
-3. **Dynamic Naming** - Plan file named based on task
+3. **Dynamic Naming** - Plan slug named based on task
 
 ## Task
 $ARGUMENTS
@@ -34,7 +34,9 @@ After understanding the requirements:
 
 1. **Extract key keywords** from the request (2-3 words)
 2. **Generate a slug**: lowercase, hyphen-separated, max 30 characters
-3. **Create plan file** at: `docs/PLAN-{slug}.md`
+3. **Create plan folder** at: `./specs/{slug}/`
+4. **Create plan file** at: `./specs/{slug}/{slug}-plan.md`
+5. **Create task list** at: `./specs/{slug}/{slug}-task.md`
 
 ### Phase 3: Plan Content Structure
 
@@ -85,12 +87,30 @@ The plan file should include:
 - [ ] Ready for deployment
 ```
 
+## Task List File
+
+The task list file should include:
+
+```markdown
+# Task List: [Project Name]
+
+## Task Table
+| task_id | name | agent | skills | priority | dependencies | status |
+
+## Details
+### [task_id] [name]
+- INPUT:
+- OUTPUT:
+- VERIFY:
+```
+
 ## Output
 
 After creating the plan, report:
 
 ```
-[OK] Plan created: docs/PLAN-{slug}.md
+[OK] Plan created: ./specs/{slug}/{slug}-plan.md
+[OK] Task list created: ./specs/{slug}/{slug}-task.md
 
 Next steps:
 - Review the plan

@@ -14,10 +14,11 @@ This workspace uses OpenCode's native format configuration.
 
 ### 🎉 システム構成 / System Configuration
 
-- ✅ **47個のスキル** / 47 domain-specific skills
-- ✅ **20個のエージェント** / 20 specialist agents
-- ✅ **11個のコマンド** / 11 custom commands
+- ✅ **48個のスキル** / 48 domain-specific skills
+- ✅ **21個のエージェント** / 21 specialist agents
+- ✅ **12個のコマンド** / 12 custom commands
 - ✅ **ユーティリティスクリプト** / Utility scripts
+- ✅ **エージェント設定は permission 統合** / Agent configs unified under permission (tools deprecated)
 
 **バージョン / Version**: 1.0
 
@@ -44,6 +45,7 @@ opencode
 ```
 /plan simple-project
 ```
+→ 出力: `./specs/{slug}/{slug}-plan.md` と `./specs/{slug}/{slug}-task.md`
 
 ---
 
@@ -95,7 +97,7 @@ Learn with **[PRACTICAL_GUIDE.md](PRACTICAL_GUIDE.md)**
 
 ## 🤖 利用可能な機能 / Available Features
 
-### コマンド / Commands (11個)
+### コマンド / Commands (12個)
 
 Type `/` in OpenCode TUI:
 
@@ -108,12 +110,13 @@ Type `/` in OpenCode TUI:
 | `/debug` | デバッグ / Debug | `/debug API error` |
 | `/test` | テスト / Test | `/test coverage` |
 | `/deploy` | デプロイ / Deploy | `/deploy production` |
+| `/docs` | ドキュメント / Docs | `/docs generate` |
 | `/preview` | プレビュー / Preview | `/preview start` |
 | `/brainstorm` | ブレインストーム / Brainstorm | `/brainstorm auth system` |
 | `/orchestrate` | マルチエージェント / Multi-agent | `/orchestrate full-stack` |
 | `/ui-ux-pro-max` | UI/UXデザイン / Design | `/ui-ux-pro-max dashboard` |
 
-### エージェント / Agents (20個)
+### エージェント / Agents (21個)
 
 **Primary Agents** (Tabキーで切り替え):
 - `@orchestrator` - マルチエージェント調整
@@ -130,12 +133,12 @@ Type `/` in OpenCode TUI:
 - `@performance-optimizer` - パフォーマンス
 - [他12個 / 12 more]
 
-### スキル / Skills (47個)
+### スキル / Skills (48個)
 
 - **Frontend**: nextjs-react-expert, tailwind-patterns, web-design-guidelines
 - **Backend**: api-patterns, database-design, nodejs-best-practices, python-patterns
 - **Testing**: testing-patterns, systematic-debugging, clean-code
-- [他38個 / 38 more]
+- [他39個 / 39 more]
 
 ---
 
@@ -213,9 +216,9 @@ Type `/` in OpenCode TUI:
 ├── AGENTS.md                      # プロジェクトルール / Project rules
 │
 └── .opencode/                     # OpenCode 設定 / Config
-    ├── agents/                    # 20 エージェント / 20 agents
-    ├── skills/                    # 47 スキル / 47 skills
-    ├── commands/                  # 11 コマンド / 11 commands
+    ├── agents/                    # 21 エージェント / 21 agents
+    ├── skills/                    # 48 スキル / 48 skills
+    ├── commands/                  # 12 コマンド / 12 commands
     ├── scripts/                   # Python スクリプト / Python scripts
     └── README.md                  # コマンド詳細 / Command details
 ```
@@ -294,7 +297,7 @@ opencode
 ### v1.0 (2026-01-31) - 現在 / Current
 
 - ✅ 完全なシステム構築 / Full system setup
-- ✅ 47スキル、20エージェント、11コマンド / 47 skills, 20 agents, 11 commands
+- ✅ 48スキル、21エージェント、12コマンド / 48 skills, 21 agents, 12 commands
 - ✅ 包括的なドキュメント / Comprehensive documentation
 
 ### v1.1 (計画中 / Planned)
@@ -338,7 +341,7 @@ opencode
 ---
 
 **バージョン**: 1.0
-**最終更新**: 2026-01-31
+**最終更新**: 2026-02-06
 **システム**: OpenCode
 
 ---

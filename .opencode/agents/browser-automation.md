@@ -2,162 +2,16 @@
 description: Lightweight browser automation specialist. Expert at Playwright and Chrome DevTools operations for UI testing, screenshots, navigation, and form interactions. Optimized for quick browser tasks without heavy analysis.
 mode: subagent
 model: github-copilot/claude-haiku-4.5
-tools:
-  bash: True
-  glob: True
-  grep: True
-  read: True
-  chrome-devtools_click: True
-  chrome-devtools_close_page: True
-  chrome-devtools_drag: True
-  chrome-devtools_evaluate_script: True
-  chrome-devtools_emulate: True
-  chrome-devtools_fill: True
-  chrome-devtools_fill_form: True
-  chrome-devtools_get_console_message: True
-  chrome-devtools_get_network_request: True
-  chrome-devtools_handle_dialog: True
-  chrome-devtools_hover: True
-  chrome-devtools_list_console_messages: True
-  chrome-devtools_list_network_requests: True
-  chrome-devtools_list_pages: True
-  chrome-devtools_navigate_page: True
-  chrome-devtools_new_page: True
-  chrome-devtools_performance_analyze_insight: True
-  chrome-devtools_performance_start_trace: True
-  chrome-devtools_performance_stop_trace: True
-  chrome-devtools_press_key: True
-  chrome-devtools_resize_page: True
-  chrome-devtools_select_page: True
-  chrome-devtools_take_screenshot: True
-  chrome-devtools_take_snapshot: True
-  chrome-devtools_upload_file: True
-  chrome-devtools_wait_for: True
-  playwright_browser_close: True
-  playwright_browser_console_messages: True
-  playwright_browser_evaluate: True
-  playwright_browser_file_upload: True
-  playwright_browser_fill_form: True
-  playwright_browser_handle_dialog: True
-  playwright_browser_install: True
-  playwright_browser_press_key: True
-  playwright_browser_take_screenshot: True
-  playwright_browser_type: True
-  playwright_browser_navigate: True
-  playwright_browser_navigate_back: True
-  playwright_browser_network_requests: True
-  playwright_browser_run_code: True
-  playwright_browser_snapshot: True
-  playwright_browser_click: True
-  playwright_browser_drag: True
-  playwright_browser_hover: True
-  playwright_browser_select_option: True
-  playwright_browser_tabs: True
-  playwright_browser_wait_for: True
-  playwright_browser_resize: True
- permission:
+permission:
+  read: allow
+  glob: allow
+  grep: allow
+  list: allow
+  question: allow
+  edit: deny
+  write: deny
   bash:
-    "*": deny
-    "npm *": allow
-    "pnpm *": allow
-    "yarn *": allow
-    "bun *": allow
-    "python *": allow
-    "python3 *": allow
-    "pip *": allow
-    "pip3 *": allow
-    "git status": allow
-    "git diff": allow
-    "git log": allow
-    "git show": allow
-    "git add": allow
-    "git commit": allow
-    "git push": allow
-    "git pull": allow
-    "git fetch": allow
-    "git branch": allow
-    "git checkout": allow
-    "git switch": allow
-    "git stash": allow
-    "git reset": allow
-    "git restore": allow
-    "ls": allow
-    "ll": allow
-    "la": allow
-    "cat": allow
-    "head": allow
-    "tail": allow
-    "less": allow
-    "grep *": allow
-    "find *": allow
-    "mkdir *": allow
-    "mkdir -p *": allow
-    "touch *": allow
-    "cp *": allow
-    "mv *": allow
-    "echo *": allow
-    "printf *": allow
-    "jq *": allow
-    "curl *": allow
-    "wget *": allow
-    "which *": allow
-    "whereis *": allow
-    "type *": allow
-    "file *": allow
-    "stat *": allow
-    "wc *": allow
-    "sort *": allow
-    "uniq *": allow
-    "cut *": allow
-    "awk *": allow
-    "sed *": allow
-    "tr *": allow
-    "date *": allow
-    "whoami": allow
-    "id": allow
-    "pwd": allow
-    "cd *": allow
-    "tree *": allow
-    "rg *": allow
-    "fd *": allow
-    "bat *": allow
-    "code *": allow
-    "nvim *": allow
-    "vim *": allow
-    "vi *": allow
-    "nano *": allow
-    "sh *": allow
-    "bash *": allow
-    "zsh *": allow
-    "fish *": allow
-    "make *": allow
-    "cargo *": allow
-    "go *": allow
-    "rustc *": allow
-    "node *": allow
-    "npx *": allow
-    "docker ps": allow
-    "docker images": allow
-    "docker build *": allow
-    "docker compose *": allow
-    "docker-compose *": allow
-    "docker run *": allow
-    "docker exec *": allow
-    "docker logs *": allow
-    "docker inspect *": allow
-    "docker network *": allow
-    "docker volume *": allow
-    "pm2 *": allow
-    "systemctl *": allow
-    "service *": allow
-    "ps *": allow
-    "top": allow
-    "htop": allow
-    "pgrep *": allow
-    "pidof *": allow
-    "lsof *": allow
-    "netstat *": allow
-    "ss *": allow
+    "*": allow
     "rm -rf *": deny
     "rm -r *": deny
     "rm *": ask
@@ -165,26 +19,21 @@ tools:
     "git push --force *": deny
     "git clean -fd *": deny
     "docker kill *": ask
-    "docker stop *": allow
-    "docker restart *": allow
     "pkill *": ask
     "kill *": ask
     "killall *": ask
     "shutdown *": deny
-    "reboot": deny
-    "poweroff": deny
+    reboot: deny
+    poweroff: deny
     "init 0": deny
     "telinit 0": deny
-    "halt": deny
+    halt: deny
     "chmod -R *": ask
     "chown -R *": ask
     "dd *": deny
     "> *": deny
     "sudo *": ask
-  chrome-devtools_evaluate_script: ask
-  playwright_browser_evaluate: ask
-  playwright_browser_run_code: ask
-
+  skill: allow
 ---
 
 ## Available Skills

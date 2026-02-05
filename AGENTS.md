@@ -73,7 +73,7 @@ Use the skill tool to load nextjs-react-expert
 | **Question** | "what is", "how does", "explain" | Direct answer |
 | **Survey** | "analyze", "list files", "overview" | Use `@explore` or `@explorer-agent` |
 | **Simple Code** | "fix", "add" (single file) | Direct edit |
-| **Complex Code** | "build", "create", "implement" | Use `@orchestrate` command or `@project-planner` |
+| **Complex Code** | "build", "create", "implement" | Use `/orchestrate` command or `@project-planner` |
 | **Design** | "design", "UI", "dashboard" | Use `/ui-ux-pro-max` command |
 | **Debug** | "bug", "error", "not working" | Use `/debug` command |
 | **Test** | "test", "coverage" | Use `/test` command |
@@ -169,7 +169,7 @@ Type `/` in OpenCode TUI to access custom commands:
 - `plan-writing` - Task planning and breakdown
 - `tdd-workflow` - Test-driven development
 
-**Full list**: See `.opencode/skills/` directory (47 skills)
+**Full list**: See `.opencode/skills/` directory (48 skills)
 
 ---
 

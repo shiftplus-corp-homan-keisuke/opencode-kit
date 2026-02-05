@@ -15,14 +15,14 @@
 │  • Task breakdown                                            │
 │  • Dependency graph                                          │
 │  • File structure planning                                   │
-│  • Create {task-slug}.md in project root (MANDATORY)             │
+│  • Create plan + task list in ./specs/{plan-slug}/ (MANDATORY)   │
 └─────────────────────────────────────────────────────────────┘
                               │
                               ▼
 ┌─────────────────────────────────────────────────────────────┐
 │              CHECKPOINT: PLAN VERIFICATION                   │
-│  🔴 VERIFY: Does {task-slug}.md exist in project root?       │
-│  🔴 If NO → STOP → Create plan file first                    │
+│  🔴 VERIFY: Do plan + task list exist in ./specs/{plan-slug}/?│
+│  🔴 If NO → STOP → Create plan + task list first              │
 │  🔴 If YES → Proceed to specialist agents                    │
 └─────────────────────────────────────────────────────────────┘
                               │
@@ -60,12 +60,12 @@
 | Phase | Agent(s) | Parallel? | Prerequisite | CHECKPOINT |
 |-------|----------|-----------|--------------|------------|
 | 0 | Socratic Gate | ❌ | - | ✅ Ask 3 questions |
-| 1 | Project Planner | ❌ | Questions answered | ✅ **PLAN.md created** |
-| 1.5 | **PLAN VERIFICATION** | ❌ | PLAN.md exists | ✅ **File exists in root** |
+| 1 | Project Planner | ❌ | Questions answered | ✅ **Plan + task list created** |
+| 1.5 | **PLAN VERIFICATION** | ❌ | Plan + task list exist | ✅ **Files exist in specs** |
 | 2 | Database Architect | ❌ | Plan ready | Schema defined |
 | 3 | Backend Specialist | ❌ | Schema ready | API routes created |
 | 4 | Frontend Specialist | ✅ | API ready (partial) | UI components ready |
 | 5 | Security Auditor, Test Engineer | ✅ | Code ready | Tests & audit pass |
 | 6 | DevOps Engineer | ❌ | All code ready | Deployment ready |
 
-> 🔴 **CRITICAL:** Phase 1.5 is MANDATORY. No specialist agents proceed without PLAN.md verification.
+> 🔴 **CRITICAL:** Phase 1.5 is MANDATORY. No specialist agents proceed without plan + task list verification.

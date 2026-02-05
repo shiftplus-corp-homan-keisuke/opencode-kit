@@ -145,7 +145,8 @@ Ctrl+C または type: exit
 **実行される内容 / What Happens**:
 1. 要件分析 / Requirements analysis
 2. 必要に応じて質問 / Questions if needed
-3. `docs/PLAN-ecommerce-site.md` 作成 / Create plan file
+3. `./specs/ecommerce-site/ecommerce-site-plan.md` 作成 / Create plan file
+4. `./specs/ecommerce-site/ecommerce-site-task.md` 作成 / Create task list
 4. タスク分解 / Task breakdown
 
 **作成される計画ファイル / Plan File Created**:
@@ -373,7 +374,7 @@ skill({ name: "nextjs-react-expert" })
 ### スキル一覧（抜粋） / Skill List (Partial)
 
 ```
-全部で47個のスキルが利用可能 / 47 skills available
+全部で48個のスキルが利用可能 / 48 skills available
 
 主なスキル / Key skills:
 - clean-code
@@ -398,7 +399,8 @@ skill({ name: "nextjs-react-expert" })
 /plan e-commerce site with product catalog
 
 # 2. 計画を確認 / Review plan
-[docs/PLAN-ecommerce-site.md が作成される]
+[./specs/ecommerce-site/ecommerce-site-plan.md が作成される]
+[./specs/ecommerce-site/ecommerce-site-task.md が作成される]
 
 # 3. アプリを作成 / Create application
 /create e-commerce site
