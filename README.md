@@ -1,28 +1,28 @@
-# OpenCode Commands
+# OpenCode コマンド
 
-Custom commands for OpenCode TUI, converted from `.agent/workflows/` system.
+OpenCode TUI のカスタムコマンド、`.agent/workflows/` システムから変換されました。
 
-## Available Commands
+## 利用可能なコマンド
 
-| Command | Description | Agent | Subtask |
+| コマンド | 説明 | エージェント | サブタスク |
 |---------|-------------|-------|---------|
-| `/status` | Show project and agent status | - | - |
-| `/preview` | Preview server management (start/stop/restart) | - | - |
-| `/brainstorm` | Structured brainstorming for projects | - | - |
-| `/plan` | Create project plan with task breakdown | general | ✅ |
-| `/create` | Create new application | general | ✅ |
-| `/enhance` | Add features to existing application | general | ✅ |
-| `/debug` | Systematic problem investigation | - | - |
-| `/test` | Test generation and execution | - | - |
-| `/deploy` | Production deployment with pre-flight checks | - | - |
-| `/orchestrate` | Coordinate multiple agents for complex tasks | general | ✅ |
-| `/ui-ux-pro-max` | AI-powered design system with 50+ styles | - | - |
+| `/status` | プロジェクトとエージェントの状態を表示 | - | - |
+| `/preview` | プレビューサーバー管理 (start/stop/restart) | - | - |
+| `/brainstorm` | プロジェクト向けの構造化されたブレインストーミング | - | - |
+| `/plan` | タスク分解を含むプロジェクト計画の作成 | general | ✅ |
+| `/create` | 新しいアプリケーションの作成 | general | ✅ |
+| `/enhance` | 既存のアプリケーションに機能を追加 | general | ✅ |
+| `/debug` | 体系的な問題調査 | - | - |
+| `/test` | テストの生成と実行 | - | - |
+| `/deploy` | 事前チェック付きの本番デプロイメント | - | - |
+| `/orchestrate` | 複雑なタスクのための複数エージェントの調整 | general | ✅ |
+| `/ui-ux-pro-max` | 50以上のスタイルを持つAI搭載デザインシステム | - | - |
 
-## Usage
+## 使用方法
 
-### Basic Usage
+### 基本的な使用法
 
-Type `/` in the OpenCode TUI followed by the command name:
+OpenCode TUI で `/` を入力し、コマンド名を続けて入力します：
 
 ```
 /status
@@ -34,9 +34,9 @@ Type `/` in the OpenCode TUI followed by the command name:
 /deploy
 ```
 
-### Commands with Arguments
+### 引数付きコマンド
 
-Many commands accept arguments using `$ARGUMENTS`:
+多くのコマンドは `$ARGUMENTS` を使用して引数を受け取ります：
 
 ```
 /plan e-commerce site with cart
@@ -47,9 +47,9 @@ Many commands accept arguments using `$ARGUMENTS`:
 /ui-ux-pro-max fintech dashboard modern
 ```
 
-### Subcommands
+### サブコマンド
 
-Some commands support subcommands:
+一部のコマンドはサブコマンドをサポートしています：
 
 ```
 /preview [start|stop|restart|check]
@@ -57,129 +57,129 @@ Some commands support subcommands:
 /test [coverage|watch]
 ```
 
-## Command Details
+## コマンド詳細
 
-### `/status` - Project Status
+### `/status` - プロジェクトステータス
 
-Shows current project information:
-- Project name and type
-- Tech stack
-- Running preview server
-- File statistics
+現在のプロジェクト情報を表示します：
+- プロジェクト名と種類
+- テックスタック
+- 実行中のプレビューサーバー
+- ファイル統計
 
-### `/preview` - Preview Server Management
+### `/preview` - プレビューサーバー管理
 
-Manage development preview servers:
-- `/preview` - Show current status
-- `/preview start` - Start server
-- `/preview stop` - Stop server
-- `/preview restart` - Restart server
-- `/preview check` - Health check
+開発プレビューサーバーを管理します：
+- `/preview` - 現在のステータスを表示
+- `/preview start` - サーバーを起動
+- `/preview stop` - サーバーを停止
+- `/preview restart` - サーバーを再起動
+- `/preview check` - ヘルスチェック
 
-Auto-detects:
+自動検出：
 - Next.js (npm run dev)
 - Vite (npm run dev)
 - Python/FastAPI (uvicorn)
 - Python/Flask (flask run)
 
-### `/brainstorm` - Structured Brainstorming
+### `/brainstorm` - 構造化されたブレインストーミング
 
-Explore multiple options before implementation:
-- Provides 3+ approaches with pros/cons
-- Estimates effort levels
-- Recommends best approach
-- No code, only ideas
+実装前に複数の選択肢を探求：
+- 3つ以上のアプローチと長所/短所を提供
+- 作業レベルを見積もり
+- 最適なアプローチを推奨
+- コードは書かず、アイデアのみ
 
-### `/plan` - Project Planning
+### `/plan` - プロジェクト計画
 
-Create detailed project plans:
-- Analyzes requirements
-- Asks clarifying questions if needed
-- Creates `docs/PLAN-{slug}.md`
-- Task breakdown with phases
-- No code writing, planning only
+詳細なプロジェクト計画を作成：
+- 要件を分析
+- 必要に応じて明確化のための質問
+- `docs/PLAN-{slug}.md` を作成
+- 段階的なタスク分解
+- コードは書かず、計画のみ
 
-### `/create` - Create Application
+### `/create` - アプリケーション作成
 
-Build new applications from scratch:
-- Interactive requirement gathering
-- Tech stack selection
-- Project structure creation
-- Core feature implementation
-- Preview setup
+ゼロから新しいアプリケーションを構築：
+- 対話的な要件収集
+- テックスタック選択
+- プロジェクト構造作成
+- コア機能実装
+- プレビュー設定
 
-### `/enhance` - Add Features
+### `/enhance` - 機能追加
 
-Update existing applications:
-- Analyzes current codebase
-- Plans changes
-- Creates new files
-- Updates existing code
-- Maintains consistency
+既存のアプリケーションを更新：
+- 現在のコードベースを分析
+- 変更を計画
+- 新規ファイルを作成
+- 既存のコードを更新
+- 一貫性を維持
 
-### `/debug` - Debug Issues
+### `/debug` - デバッグ
 
-Systematic problem investigation:
-- Gathers error context
-- Checks recent changes
-- Forms hypotheses
-- Tests systematically
-- Applies fixes
-- Adds prevention measures
+体系的な問題調査：
+- エラー文脈を収集
+- 最近の変更を確認
+- 仮説を形成
+- 体系的テスト
+- 修正を適用
+- 予防策を追加
 
-### `/test` - Testing
+### `/test` - テスト
 
-Generate and run tests:
-- `/test` - Run all tests
-- `/test [file]` - Generate tests for file
-- `/test coverage` - Show coverage report
-- Supports Jest, Vitest, pytest, Go test
+テストを生成・実行：
+- `/test` - 全テストを実行
+- `/test [file]` - ファイルのテストを生成
+- `/test coverage` - カバレッジレポートを表示
+- Jest, Vitest, pytest, Go test をサポート
 
-### `/deploy` - Deployment
+### `/deploy` - デプロイ
 
-Production deployment with safety:
-- Pre-flight checks (lint, test, build, security)
-- Platform detection (Vercel, Railway, Fly, Docker)
-- Deployment execution
-- Health verification
-- Rollback support
+安全な本番デプロイ：
+- 事前チェック (lint, test, build, security)
+- プラットフォーム検出 (Vercel, Railway, Fly, Docker)
+- デプロイ実行
+- ヘルス検証
+- ロールバックサポート
 
-### `/orchestrate` - Multi-Agent Coordination
+### `/orchestrate` - マルチエージェント調整
 
-Coordinate multiple agents for complex tasks:
-- Minimum 3 parallel tasks
-- Two-phase approach (planning → implementation)
-- User approval gates
-- Comprehensive reporting
+複�雑なタスクのために複数エージェントを調整：
+- 最低3つの並列タスク
+- 2段階アプローチ (計画 → 実装)
+- ユーザー承認ゲート
+- 包括的なレポート
 
-### `/ui-ux-pro-max` - Design System
+### `/ui-ux-pro-max` - デザインシステム
 
-AI-powered design recommendations:
-- 50+ UI styles
-- 97 color palettes
-- 57 font pairings
-- 99 UX guidelines
-- 25 chart types
-- 9 tech stacks
+AI搭載デザイン推奨：
+- 50以上のUIスタイル
+- 97種のカラーパレット
+- 57のフォントペアリング
+- 99のUXガイドライン
+- 25種のチャートタイプ
+- 9つのテックスタック
 
-## Tool Mapping
+## ツールマッピング
 
-| Original Workflow | OpenCode Tools |
+| 元のワークフロー | OpenCode ツール |
 |------------------|----------------|
-| Python scripts | ``!`command` `` (shell output) |
-| Agent invocation | `task` tool |
-| File search | `glob`, `grep` |
-| File read | `read` |
-| File write | `write` |
-| File edit | `edit` |
-| Questions | `question` tool |
-| Task tracking | `todowrite` tool |
+| Python スクリプト | ``!`command` `` (shell 出力) |
+| エージェント呼出し | `task` ツール |
+| ファイル検索 | `glob`, `grep` |
+| ファイル読取 | `read` |
+| ファイル書込 | `write` |
+| ファイル編集 | `edit` |
+| 質問 | `question` ツール |
+| タスク追跡 | `todowrite` ツール |
 
-## Features
+## 機能
 
-### Shell Command Execution
+### シェルコマンド実行
 
-Commands can run shell commands and include output:
+コマンドはシェルコマンドを実行し、出力を含めることができます：
 
 ```bash
 !`npm test`
@@ -187,66 +187,66 @@ Commands can run shell commands and include output:
 !`git log --oneline -10`
 ```
 
-### File References
+### ファイル参照
 
-Include file content automatically:
-
-```markdown
-Review the component in @src/components/Button.tsx
-```
-
-### Positional Arguments
-
-Access individual arguments:
+ファイル内容を自動的に含める：
 
 ```markdown
-$1 - First argument
-$2 - Second argument
-$3 - Third argument
+@src/components/Button.tsx のコンポーネントをレビュー
 ```
 
-## Architecture
+### 位置引数
+
+個別の引数にアクセス：
+
+```markdown
+$1 - 第1引数
+$2 - 第2引数
+$3 - 第3引数
+```
+
+## アーキテクチャ
 
 ```
 .opencode/
 └── commands/
-    ├── brainstorm.md       # Idea exploration
-    ├── create.md           # App creation
-    ├── debug.md            # Problem investigation
-    ├── deploy.md           # Deployment
-    ├── enhance.md          # Feature addition
-    ├── orchestrate.md      # Multi-agent tasks
-    ├── plan.md             # Project planning
-    ├── preview.md          # Server management
-    ├── status.md           # Status display
-    ├── test.md             # Testing
-    └── ui-ux-pro-max.md    # Design system
+    ├── brainstorm.md       # アイデア探索
+    ├── create.md           # アプリ作成
+    ├── debug.md            # 問題調査
+    ├── deploy.md           # デプロイ
+    ├── enhance.md          # 機能追加
+    ├── orchestrate.md      # マルチエージェントタスク
+    ├── plan.md             # プロジェクト計画
+    ├── preview.md          # サーバー管理
+    ├── status.md           # ステータス表示
+    ├── test.md             # テスト
+    └── ui-ux-pro-max.md    # デザインシステム
 ```
 
-## Best Practices
+## ベストプラクティス
 
-1. **Start with `/plan`** for complex features
-2. **Use `/brainstorm`** before committing to approach
-3. **Check `/status`** to understand current state
-4. **Run `/test`** before `/deploy`**
-5. **Use `/orchestrate`** for multi-domain tasks
-6. **Apply `/ui-ux-pro-max`** for design guidance
+1. **複�雑な機能は `/plan` から開始**
+2. **アプローチ決定前に `/brainstorm` を使用**
+3. **現状理解のために `/status` を確認**
+4. **`/deploy` 前に `/test` を実行**
+5. **マルチドメインタスクは `/orchestrate` を使用**
+6. **デザインガイダンスに `/ui-ux-pro-max` を適用**
 
-## Migration Notes
+## 移行ノート
 
-These commands were converted from `.agent/workflows/` system:
+これらのコマンドは `.agent/workflows/` システムから変換されました：
 
-- ✅ Maintained all original functionality
-- ✅ Adapted to OpenCode's native tools
-- ✅ Uses OpenCode's command syntax
-- ✅ Supports shell command execution
-- ✅ File references and arguments
-- ⚠️  Some Python scripts retained (e.g., ui-ux-pro-max)
-- ⚠️  Agent system simplified to OpenCode's model
+- ✅ 全ての元の機能を維持
+- ✅ OpenCode のネイティブツールに適応
+- ✅ OpenCode のコマンド構文を使用
+- ✅ シェルコマンド実行をサポート
+- ✅ ファイル参照と引数
+- ⚠️  一部の Python スクリプトは維持 (例: ui-ux-pro-max)
+- ⚠️  エージェントシステムは OpenCode モデルに簡素化
 
-## Support
+## サポート
 
-For issues or questions:
-- Check OpenCode docs: https://opencode.ai/docs/commands/
-- Review original workflows: `.agent/workflows/`
-- Test commands in isolation first
+問題や質問がある場合：
+- OpenCode ドキュメントを確認: https://opencode.ai/docs/commands/
+- 元のワークフローをレビュー: `.agent/workflows/`
+- 最初にコマンドを個別にテスト

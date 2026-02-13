@@ -1,55 +1,55 @@
 ---
-description: Preview server management
+description: プレビューサーバーの管理
 ---
 
-Manage the preview server: start, stop, restart, status check.
+プレビューサーバーの start/stop/restart/status/check を管理する。
 
 ## Usage
 
-- `/preview` - Show current status
-- `/preview start` - Start server
-- `/preview stop` - Stop server
-- `/preview restart` - Restart server
-- `/preview check` - Health check
+- `/preview` - 現在のステータス
+- `/preview start` - 起動
+- `/preview stop` - 停止
+- `/preview restart` - 再起動
+- `/preview check` - ヘルスチェック
 
 $ARGUMENTS
 
 ## Steps
 
-### If no arguments or "status"
-1. Check if server is running
+### 引数が無い/"status" の場合
+1. サーバー起動確認
    - Run: !`ps aux | grep -E "(npm|node|next|vite|python|uvicorn)" | grep -v grep`
-2. Show current status with URL
+2. URL を含むステータス表示
 
-### If "start"
-1. Check if already running
+### "start" の場合
+1. 既に起動していないか確認
    - Run: !`ps aux | grep -E "(npm|node|next|vite|python|uvicorn)" | grep -v grep`
-2. Detect project type and start appropriate server
+2. プロジェクト種別を検出して起動
    - Next.js: `npm run dev`
    - Vite: `npm run dev`
    - Python/FastAPI: `uvicorn main:app --reload`
    - Python/Flask: `flask run`
-3. Show URL (usually http://localhost:3000 or similar)
+3. URL を表示（通常 http://localhost:3000 など）
 
-### If "stop"
-1. Find running server process
+### "stop" の場合
+1. 起動プロセスを特定
    - Run: !`ps aux | grep -E "(npm|node|next|vite|python|uvicorn)" | grep -v grep`
-2. Stop the process gracefully
+2. 安全に停止
    - Run: !`pkill -f "next dev"` or appropriate command
 
-### If "restart"
-1. Stop the server
-2. Wait 2 seconds
-3. Start the server again
+### "restart" の場合
+1. 停止
+2. 2 秒待機
+3. 再起動
 
-### If "check"
-1. Verify server is responding
+### "check" の場合
+1. 応答確認
    - Run: !`curl -s http://localhost:3000 > /dev/null && echo "OK" || echo "Not responding"`
-2. Show health status
+2. ヘルス表示
 
 ## Output Format
 
-For status:
+status:
 ```
 === Preview Status ===
 
@@ -59,7 +59,7 @@ For status:
 💚 Health: [OK/Not Running]
 ```
 
-For start:
+start:
 ```
 🚀 Starting preview...
    Port: [port-number]
@@ -69,7 +69,7 @@ For start:
    URL: [url]
 ```
 
-For port conflict:
+port conflict:
 ```
 ⚠️ Port [port] is in use.
 
@@ -81,4 +81,4 @@ Options:
 Which one? (default: 1)
 ```
 
-Manage the preview server based on the arguments provided.
+指定された引数に基づいてプレビューサーバーを管理する。

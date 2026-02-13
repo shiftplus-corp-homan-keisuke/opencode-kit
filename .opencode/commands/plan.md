@@ -1,46 +1,46 @@
 ---
-description: Create project plan with task breakdown
+description: タスク分解を含むプロジェクト計画を作成
 agent: general
 subtask: true
 ---
 
-You are now in PLANNING MODE. Create a project plan for the given task.
+PLANNING MODE でプロジェクト計画を作成する。
 
 ## 🔴 CRITICAL RULES
 
-1. **NO CODE WRITING** - This command creates plan + task list only
-2. **Socratic Gate** - Ask clarifying questions before planning
-3. **Dynamic Naming** - Plan slug named based on task
+1. **NO CODE WRITING** - このコマンドは plan + task list のみ
+2. **Socratic Gate** - 計画前に質問で確認
+3. **Dynamic Naming** - plan slug はタスク名から生成
 
 ## Task
 $ARGUMENTS
 
 ## Process
 
-### Phase 1: Context Check (If information is missing)
+### Phase 1: Context Check (情報不足時)
 
-Before planning, if the request is unclear, ask these questions:
+依頼が不明確なら以下を確認:
 
-1. What type of application/project?
-2. What are the core features?
-3. Who will use it?
-4. Any specific constraints or preferences?
+1. どのタイプのアプリ/プロジェクト?
+2. コア機能は?
+3. 誰が使う?
+4. 制約や好みは?
 
-Use the `question` tool to gather this information.
+`question` ツールで情報を集める。
 
 ### Phase 2: Create Plan
 
-After understanding the requirements:
+要件理解後:
 
-1. **Extract key keywords** from the request (2-3 words)
-2. **Generate a slug**: lowercase, hyphen-separated, max 30 characters
-3. **Create plan folder** at: `./specs/{slug}/`
-4. **Create plan file** at: `./specs/{slug}/{slug}-plan.md`
-5. **Create task list** at: `./specs/{slug}/{slug}-task.md`
+1. 依頼から **キーワード** を抽出 (2-3語)
+2. **slug 生成**: lowercase + hyphen, max 30
+3. **plan folder**: `./specs/{slug}/`
+4. **plan file**: `./specs/{slug}/{slug}-plan.md`
+5. **task list**: `./specs/{slug}/{slug}-task.md`
 
 ### Phase 3: Plan Content Structure
 
-The plan file should include:
+plan ファイルに含める:
 
 ```markdown
 # Project Plan: [Project Name]
@@ -89,7 +89,7 @@ The plan file should include:
 
 ## Task List File
 
-The task list file should include:
+task list ファイルに含める:
 
 ```markdown
 # Task List: [Project Name]
@@ -106,7 +106,7 @@ The task list file should include:
 
 ## Output
 
-After creating the plan, report:
+作成後は以下を報告:
 
 ```
 [OK] Plan created: ./specs/{slug}/{slug}-plan.md
@@ -118,4 +118,4 @@ Next steps:
 - Or modify plan manually
 ```
 
-Create a comprehensive project plan without writing any code.
+コードを書かずに計画を作成する。

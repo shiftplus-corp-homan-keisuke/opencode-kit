@@ -3,22 +3,42 @@
   "tui": {
     "scroll_speed": 5
   },
-
   "mcp": {
     "chrome-devtools": {
       "type": "local",
-      "command": ["npx", "-y", "chrome-devtools-mcp"],
+      "command": [
+        "npx",
+        "-y",
+        "chrome-devtools-mcp"
+      ],
       "enabled": true
     },
     "playwright": {
       "type": "local",
-      "command": ["npx", "-y", "@playwright/mcp"],
+      "command": [
+        "npx",
+        "-y",
+        "@playwright/mcp"
+      ],
       "enabled": true
     },
     "serena": {
       "type": "local",
-      "command": ["npx", "-y", "serena-slim"],
-      "enabled": true
+      "enabled": true,
+      "command": [
+        "uvx",
+        "--from",
+        "git+https://github.com/oraios/serena",
+        "serena",
+        "start-mcp-server",
+        "--context",
+        "ide-assistant",
+        "--project",
+        "{cwd}"
+      ],
+      "environment": {
+        "PYTHONUNBUFFERED": "1"
+      }
     }
   }
 }

@@ -1,41 +1,41 @@
 ---
-description: Generate and manage project documentation automatically
+description: プロジェクトドキュメントの自動生成/管理
 agent: general
 subtask: true
 ---
 
-You are now in DOCS mode for automatic documentation generation.
+DOCS モードでドキュメントを自動生成する。
 
 ## Task
 $ARGUMENTS
 
 ## Process
 
-### Phase 1: Command Analysis
+### Phase 1: コマンド解析
 
-Parse the user's request to determine the action:
+ユーザー依頼からアクションを判定:
 
 **Available subcommands:**
-- `generate` - Generate all documentation
-- `generate --type [api|components|architecture]` - Generate specific type
-- `update` - Update only changed files
-- `serve` - Start documentation preview server
-- `config init` - Create configuration file
+- `generate` - すべて生成
+- `generate --type [api|components|architecture]` - 特定種別
+- `update` - 変更分のみ
+- `serve` - ドキュメントプレビューサーバー
+- `config init` - 設定ファイル作成
 
 **Examples:**
-- `/docs generate` → Generate all documentation
-- `/docs generate --type api` → Generate API docs only
-- `/docs update` → Update changed files
-- `/docs serve` → Start preview server
-- `/docs config init` → Create .docsrc.json
+- `/docs generate` → 全生成
+- `/docs generate --type api` → API docs のみ
+- `/docs update` → 差分のみ
+- `/docs serve` → プレビュー
+- `/docs config init` → .docsrc.json 作成
 
-### Phase 2: Configuration Check
+### Phase 2: 設定チェック
 
-1. **Check for `.docsrc.json`** configuration file
-   - If missing and command is `generate` or `update`: Ask user to run `/docs config init` first
-   - If `config init`: Create the configuration file
+1. **`.docsrc.json` を確認**
+   - `generate`/`update` で存在しない → `/docs config init` を促す
+   - `config init` の場合は作成
 
-2. **Load configuration** if exists:
+2. **設定読み込み** (存在時):
    ```json
    {
      "outputDir": "docs",
@@ -49,65 +49,64 @@ Parse the user's request to determine the action:
    }
    ```
 
-### Phase 3: Documentation Generation
+### Phase 3: ドキュメント生成
 
-#### For `generate` command:
+#### `generate`
 
-1. **Call the docs generator script:**
+1. **生成スクリプト実行**:
    ```bash
    python3 .opencode/scripts/docs_generator.py generate
    ```
 
-2. **Verify output** was created in the configured directory
+2. **出力確認**
+3. **結果報告**
 
-3. **Report results** to the user
+#### `update`
 
-#### For `update` command:
-
-1. **Check for recent changes** using git:
+1. **差分取得**:
    ```bash
    git diff --name-only HEAD~1
    ```
 
-2. **Run incremental generation:**
+2. **差分生成**:
    ```bash
    python3 .opencode/scripts/docs_generator.py update --files [changed files]
    ```
 
-#### For `serve` command:
+#### `serve`
 
-1. **Start preview server:**
-   - Check if docs directory exists
-   - Start a simple HTTP server or use existing preview system
-   - Display URL to user
+1. **プレビューサーバー起動**
+   - docs ディレクトリ確認
+   - 簡易 HTTP サーバー or 既存 preview
+   - URL を表示
 
-#### For `config init` command:
+#### `config init`
 
-1. **Create `.docsrc.json`** in project root
-2. **Detect project type** (Next.js, React, FastAPI, etc.)
-3. **Generate appropriate default configuration**
-4. **Create output directories** if they don't exist
+1. **`.docsrc.json` 作成**
+2. **プロジェクト種別を検出**
+3. **適切な default config を生成**
+4. **出力ディレクトリ作成**
 
 ### Phase 4: Quality Check
 
-After generation:
+生成後:
 
-1. **Verify all output files exist**
-2. **Check for errors or warnings** in the generator output
-3. **Run documentation validation** if available
-4. **Report summary** to user
+1. **出力ファイル確認**
+2. **エラー/警告チェック**
+3. **検証スクリプト実行** (あれば)
+4. **サマリー報告**
 
 ## Key Principles
 
-- **Configuration first**: Always check for `.docsrc.json` before generating
-- **Incremental updates**: Only regenerate what's necessary
-- **Clear feedback**: Report what was generated, what failed, and why
-- **Type safety**: Parse TypeScript types accurately
-- **Standards compliance**: Generate OpenAPI 3.0, Mermaid, etc.
+- **Configuration first**: `.docsrc.json` を確認
+- **Incremental updates**: 必要分のみ再生成
+- **Clear feedback**: 成功/失敗/理由を明確化
+- **Type safety**: TS 型解析
+- **Standards compliance**: OpenAPI 3.0, Mermaid
 
 ## Output Format
 
-Provide clear, structured feedback:
+成功時:
 
 ```
 ✅ Documentation generated successfully!
@@ -127,7 +126,7 @@ Provide clear, structured feedback:
    - Review: docs/ directory
 ```
 
-For errors:
+失敗時:
 
 ```
 ❌ Documentation generation failed
@@ -139,13 +138,13 @@ For errors:
 
 ## Integration with Other Commands
 
-- **After `/create`**: Offer to generate initial documentation
-- **After `/enhance`**: Suggest running `/docs update`
-- **Before `/deploy`**: Check if docs are up to date
+- **After `/create`**: 初期ドキュメント生成を提案
+- **After `/enhance`**: `/docs update` を提案
+- **Before `/deploy`**: docs が最新か確認
 
 ## Technical Notes
 
-- The generator uses Python scripts in `.opencode/scripts/`
-- Templates are stored in `.opencode/templates/docs/`
-- Supports TypeScript, JSDoc, and comment-based documentation
-- Outputs Markdown, OpenAPI JSON/YAML, and Mermaid diagrams
+- ジェネレーターは `.opencode/scripts/` の Python
+- テンプレートは `.opencode/templates/docs/`
+- TypeScript/JSDoc/コメントベース対応
+- Markdown/OpenAPI JSON/YAML/Mermaid 出力

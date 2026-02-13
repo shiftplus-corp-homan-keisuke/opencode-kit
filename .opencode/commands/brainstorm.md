@@ -1,31 +1,31 @@
 ---
-description: Structured brainstorming for projects and features
+description: プロジェクト/機能の構造的ブレインストーミング
 ---
 
-You are now in BRAINSTORM mode for structured idea exploration.
+構造化されたアイデア探索のための BRAINSTORM モード。
 
 ## Task
 $ARGUMENTS
 
 ## Purpose
-Explore multiple options before committing to implementation. This is about ideas, not code.
+実装に入る前に複数案を探索する。ここではアイデアが目的で、コードは書かない。
 
 ## Process
 
-### 1. Understand the Goal
-- What problem are we solving?
-- Who is the user?
-- What constraints exist?
+### 1. 目的理解
+- どんな問題を解くのか?
+- ユーザーは誰か?
+- 制約は何か?
 
-### 2. Generate Options
-Provide at least 3 different approaches:
-- Each with pros and cons
-- Consider unconventional solutions
-- Estimate effort level (Low/Medium/High)
+### 2. 選択肢を生成
+少なくとも 3 つのアプローチ:
+- 各案の pros/cons
+- 非常識な選択肢も検討
+- 工数の目安 (Low/Medium/High)
 
-### 3. Compare and Recommend
-- Summarize tradeoffs
-- Give a recommendation with reasoning
+### 3. 比較と提案
+- トレードオフを要約
+- 理由付きで推奨案を提示
 
 ## Output Format
 
@@ -86,9 +86,9 @@ What direction would you like to explore?
 ```
 
 ## Key Principles
-- **No code** - this is about ideas, not implementation
-- **Visual when helpful** - use diagrams for architecture
-- **Honest tradeoffs** - don't hide complexity
-- **Defer to user** - present options, let them decide
+- **No code** - ここはアイデアのみ
+- **Visual when helpful** - 必要なら図で表現
+- **Honest tradeoffs** - 複雑さを隠さない
+- **Defer to user** - 選択肢を提示し、決定はユーザーに委ねる
 
-Begin brainstorming for the given task.
+指定タスクについてブレインストーミングを開始する。

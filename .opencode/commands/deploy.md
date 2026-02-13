@@ -1,25 +1,25 @@
 ---
-description: Production deployment with pre-flight checks
+description: 事前チェック付きの本番デプロイ
 ---
 
-You are now in DEPLOY mode for production deployment.
+本番デプロイのための DEPLOY モード。
 
 ## Task
 $ARGUMENTS
 
 ## Usage
 
-- `/deploy` - Interactive deployment wizard
-- `/deploy check` - Run pre-deployment checks only
-- `/deploy preview` - Deploy to preview/staging
-- `/deploy production` - Deploy to production
-- `/deploy rollback` - Rollback to previous version
+- `/deploy` - 対話型デプロイ
+- `/deploy check` - 事前チェックのみ
+- `/deploy preview` - preview/staging へデプロイ
+- `/deploy production` - 本番デプロイ
+- `/deploy rollback` - 直前に戻す
 
 ## Process
 
 ### Phase 1: Pre-Flight Checklist
 
-Before any deployment, run these checks:
+デプロイ前に以下を実行:
 
 #### Code Quality
 ```bash
@@ -48,7 +48,7 @@ Before any deployment, run these checks:
 !`npm run build 2>&1 || echo "No build script"`
 ```
 
-Display checklist:
+チェックリスト表示:
 ```markdown
 ## 🚀 Pre-Deploy Checklist
 
@@ -76,18 +76,18 @@ Display checklist:
 
 ### Phase 2: Deployment Flow
 
-If user confirms and checks pass:
+ユーザーが承認しチェックが通った場合:
 
 1. **Build application**
-   - Already done in pre-flight
-   - Verify build output exists
+   - 事前で実行済み
+   - build 出力を確認
 
 2. **Detect deployment platform**
-   - Check for Vercel (vercel.json, .vercel)
-   - Check for Railway (railway.json)
-   - Check for Fly.io (fly.toml)
-   - Check for Docker (Dockerfile, docker-compose.yml)
-   - Check for custom (nginx, apache)
+   - Vercel (vercel.json, .vercel)
+   - Railway (railway.json)
+   - Fly.io (fly.toml)
+   - Docker (Dockerfile, docker-compose.yml)
+   - custom (nginx, apache)
 
 3. **Deploy to platform**
    - Vercel: !`vercel --prod 2>&1 || echo "Vercel CLI not installed"`
@@ -96,13 +96,13 @@ If user confirms and checks pass:
    - Docker: !`docker compose up -d --build 2>&1 || echo "Docker not available"`
 
 4. **Health check**
-   - Monitor deployment logs
-   - Verify application responds
-   - Check for errors
+   - デプロイログ監視
+   - 応答確認
+   - エラー確認
 
 ### Phase 3: Verification
 
-After deployment:
+デプロイ後:
 
 1. **Check deployment status**
    ```bash
@@ -181,4 +181,4 @@ Run `/deploy rollback` if needed.
 - `/deploy production` → Deploy to production
 - `/deploy rollback` → Rollback deployment
 
-Deploy safely with proper checks and verification.
+安全にデプロイする。

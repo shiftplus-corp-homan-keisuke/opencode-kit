@@ -1,10 +1,10 @@
 ---
-description: Coordinate multiple agents for complex tasks
+description: 複雑タスクのために複数エージェントを調整
 agent: general
 subtask: true
 ---
 
-You are now in **ORCHESTRATION MODE**. Your task: coordinate specialized agents to solve this complex problem.
+**ORCHESTRATION MODE** で複雑タスクを専門エージェントで調整する。
 
 ## Task to Orchestrate
 $ARGUMENTS
@@ -15,12 +15,12 @@ $ARGUMENTS
 
 > ⚠️ **ORCHESTRATION = MINIMUM 3 DIFFERENT AGENTS**
 >
-> If you use fewer than 3 agents, you are NOT orchestrating - you're just delegating.
+> 3 未満ならオーケストレーションではない。
 >
-> **Validation before completion:**
-> - Count invoked agents
-> - If `agent_count < 3` → STOP and invoke more agents
-> - Single agent = FAILURE of orchestration
+> **完了前の検証:**
+> - 呼び出したエージェント数
+> - `agent_count < 3` → STOP and invoke more agents
+> - 1 エージェントのみ = 失敗
 
 ### Agent Selection Matrix
 
@@ -40,17 +40,17 @@ $ARGUMENTS
 
 ### PHASE 1: PLANNING (Sequential - NO parallel agents)
 
-**Step 1:** Analyze the task
-- Identify domains involved
-- Determine complexity
-- Check if plan exists
+**Step 1:** タスク分析
+- ドメイン特定
+- 複雑度判断
+- plan の有無確認
 
-**Step 2:** Create plan if needed
-- Use the `task` tool with `project-planner` agent
-- Create comprehensive plan
-- Document approach
+**Step 2:** 必要なら計画作成
+- `task` ツールで `project-planner`
+- 計画を作成
+- 方針を文書化
 
-**Step 3:** Get user approval
+**Step 3:** ユーザー承認
 ```
 ✅ Plan created
 
@@ -59,43 +59,43 @@ Approve to proceed with implementation? (Y/N)
 - N: Plan will be revised
 ```
 
-> 🔴 **DO NOT proceed to Phase 2 without explicit user approval!**
+> 🔴 **承認なしに Phase 2 へ進まない**
 
 ### PHASE 2: IMPLEMENTATION (Parallel agents after approval)
 
-**Invoke multiple agents in parallel using the `task` tool:**
+**`task` ツールで複数エージェントを並列呼び出し:**
 
-For Web App:
+Web App:
 ```
 Use the frontend-specialist agent to [frontend task]
 Use the backend-specialist agent to [backend task]
 Use the test-engineer agent to [testing task]
 ```
 
-For API:
+API:
 ```
 Use the backend-specialist agent to [api task]
 Use the security-auditor agent to [security review]
 Use the test-engineer agent to [test coverage]
 ```
 
-> ✅ After user approval, invoke multiple agents in PARALLEL.
+> ✅ 承認後は並列で呼び出す
 
 ---
 
 ## Available Agent Types
 
-When using the `task` tool, you can specify:
+`task` ツールでは以下を指定可能:
 
 | Agent Type | Domain | Use For |
 |------------|--------|---------|
 | `general` | General-purpose | Multi-step tasks, research |
 | `explore` | Codebase exploration | Finding files, understanding structure |
 
-**Note:** OpenCode has a simpler agent system. Adapt the orchestration to use:
-1. `general` agent for most tasks
-2. `explore` agent for codebase discovery
-3. Multiple `task` calls in parallel for different aspects
+**Note:** OpenCode の簡易エージェントに合わせて適応:
+1. `general` でほとんどのタスク
+2. `explore` で探索
+3. 複数 `task` を並列
 
 ---
 
@@ -103,7 +103,7 @@ When using the `task` tool, you can specify:
 
 ### Step 1: Analyze Task Domains
 
-Identify ALL domains this task touches:
+タスクが触れるドメインを特定:
 
 ```
 □ Security     → Security focus
@@ -141,7 +141,7 @@ Use the task tool with general agent to:
 
 **PHASE 2 (Implementation - after approval):**
 
-Invoke MULTIPLE task calls in PARALLEL:
+複数 `task` を並列で呼び出し:
 
 ```
 Use the general agent to [aspect 1 of implementation]
@@ -151,24 +151,24 @@ Use the general agent to [aspect 3 of implementation]
 
 **🔴 CRITICAL: Context Passing (MANDATORY)**
 
-Each task invocation MUST include:
-1. **Original User Request:** Full text of what user asked
-2. **Decisions Made:** All user answers to questions
-3. **Previous Work:** Summary of what was done before
-4. **Current Plan State:** Relevant context
+各 task 呼び出しに含める:
+1. **Original User Request:** ユーザー依頼全文
+2. **Decisions Made:** 質疑応答の回答
+3. **Previous Work:** 既存の作業内容
+4. **Current Plan State:** 現状の文脈
 
 ### Step 4: Verification
 
-After all agents complete:
+全エージェント完了後:
 
-1. **Check file structure** with `Glob`
-2. **Read key files** to verify implementation
-3. **Run tests** if applicable
-4. **Synthesize results**
+1. `Glob` で構造確認
+2. `Read` で重要ファイル確認
+3. 必要ならテスト
+4. 結果統合
 
 ### Step 5: Synthesize Results
 
-Combine all agent outputs into unified report.
+結果を統合してレポート作成。
 
 ---
 
@@ -209,14 +209,14 @@ Combine all agent outputs into unified report.
 
 ## 🔴 EXIT GATE
 
-Before completing orchestration, verify:
+完了前に確認:
 
 1. ✅ **Agent Count:** `invoked_tasks >= 3`
-2. ✅ **All Tasks Complete:** No pending work
-3. ✅ **Report Generated:** Orchestration Report complete
+2. ✅ **All Tasks Complete:** 未完がない
+3. ✅ **Report Generated:** レポート完成
 
-> **If any check fails → DO NOT mark orchestration complete.**
+> **いずれか不一致なら完了扱いにしない。**
 
 ---
 
-**Begin orchestration now. Select 3+ tasks, execute strategically, synthesize results.**
+3 つ以上のタスクを選び、戦略的に実行して統合する。

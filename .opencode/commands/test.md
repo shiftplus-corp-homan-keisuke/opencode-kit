@@ -1,51 +1,49 @@
 ---
-description: Test generation and execution
+description: テスト生成と実行
 ---
 
-You are now in TEST mode for generating and running tests.
+テストを生成・実行する TEST モード。
 
 ## Task
 $ARGUMENTS
 
 ## Usage
 
-- `/test` - Run all tests
-- `/test [file/feature]` - Generate tests for specific target
-- `/test coverage` - Show test coverage report
-- `/test watch` - Run tests in watch mode
+- `/test` - すべてのテストを実行
+- `/test [file/feature]` - 特定ターゲットのテスト生成
+- `/test coverage` - カバレッジ表示
+- `/test watch` - ウォッチモード
 
 ## Process
 
-### Phase 1: Determine Intent
+### Phase 1: Intent 判定
 
-If `$ARGUMENTS` is empty or "all":
-- Run all tests
+`$ARGUMENTS` が空 or "all" の場合:
+- すべてのテストを実行
 
-If `$ARGUMENTS` is a file path or feature name:
-- Generate tests for that specific target
+`$ARGUMENTS` がファイルパス/機能名の場合:
+- そのターゲットのテストを生成
 
-If `$ARGUMENTS` is "coverage":
-- Show test coverage report
+`$ARGUMENTS` が "coverage" の場合:
+- カバレッジ表示
 
-If `$ARGUMENTS` is "watch":
-- Run tests in watch mode
+`$ARGUMENTS` が "watch" の場合:
+- watch モードで実行
 
-### Phase 2: Run Existing Tests
+### Phase 2: 既存テスト実行
 
-When running tests:
+1. **テストフレームワーク検出**
+   - Jest (package.json scripts に "jest")
+   - Vitest (devDependencies に "vitest")
+   - pytest (requirements.txt or pyproject.toml)
+   - その他
 
-1. **Detect test framework**
-   - Check for Jest (package.json: "jest" in scripts)
-   - Check for Vitest (package.json: "vitest" in devDependencies)
-   - Check for pytest (requirements.txt or pyproject.toml)
-   - Check for other frameworks
-
-2. **Run tests**
+2. **実行**
    - Run: !`npm test 2>&1 || python -m pytest 2>&1 || go test ./... 2>&1`
-   - Capture output
-   - Parse results
+   - 出力を取得
+   - 結果をパース
 
-3. **Show results**
+3. **結果表示**
    ```
    🧪 Running tests...
 
@@ -61,29 +59,27 @@ When running tests:
    Total: 15 tests (14 passed, 1 failed)
    ```
 
-### Phase 3: Generate Tests
+### Phase 3: テスト生成
 
-When generating new tests:
+1. **コード分析**
+   - `Read` で対象ファイルを確認
+   - 関数/メソッドを特定
+   - エッジケースを抽出
+   - モック対象を特定
 
-1. **Analyze the code**
-   - Use `Read` to examine the target file
-   - Identify functions and methods
-   - Find edge cases
-   - Detect dependencies to mock
+2. **テストケース作成**
+   - 正常系
+   - エラーケース
+   - エッジケース
+   - 結合テスト（必要時）
 
-2. **Generate test cases**
-   - Happy path tests
-   - Error cases
-   - Edge cases
-   - Integration tests (if needed)
+3. **テスト作成**
+   - `Glob` で既存テストを探す
+   - プロジェクトのフレームワークに合わせる
+   - 既存パターンに合わせる
+   - `Write` で作成
 
-3. **Write tests**
-   - Use `Glob` to find existing test files
-   - Match project's test framework (Jest, Vitest, pytest, etc.)
-   - Follow existing test patterns
-   - Use `Write` to create test file
-
-4. **Test Structure** (Jest/Vitest example):
+4. **テスト構造** (Jest/Vitest 例):
    ```typescript
    describe('[Feature]', () => {
      describe('[Function]', () => {
@@ -109,15 +105,13 @@ When generating new tests:
    });
    ```
 
-### Phase 4: Coverage Report
+### Phase 4: カバレッジ
 
-When showing coverage:
-
-1. **Run coverage**
+1. **実行**
    - Run: !`npm test -- --coverage 2>&1 || python -m pytest --cov=. 2>&1`
-   - Parse coverage percentage
+   - % をパース
 
-2. **Display results**
+2. **表示**
    ```
    📊 Test Coverage
 
@@ -133,7 +127,7 @@ When showing coverage:
 
 ## Output Format
 
-For test generation:
+テスト生成時:
 ```markdown
 ## 🧪 Tests: [Target]
 
@@ -156,7 +150,7 @@ Run with: `npm test`
 ## Key Principles
 
 - **Test behavior not implementation**
-- **One assertion per test** (when practical)
+- **One assertion per test** (実用上可能なら)
 - **Descriptive test names**
 - **Arrange-Act-Assert pattern**
 - **Mock external dependencies**
@@ -170,4 +164,4 @@ Run with: `npm test`
 - `/test coverage` → Show coverage report
 - `/test fix failed tests` → Fix failing tests
 
-Generate comprehensive tests and ensure code quality.
+包括的なテストを生成し、品質を担保する。

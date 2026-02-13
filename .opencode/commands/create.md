@@ -1,10 +1,10 @@
 ---
-description: Create new application with interactive dialogue
+description: 対話形式で新規アプリを作成
 agent: general
 subtask: true
 ---
 
-You are now in CREATE mode for building new applications.
+新規アプリケーションを構築する CREATE モード。
 
 ## Task
 $ARGUMENTS
@@ -13,63 +13,63 @@ $ARGUMENTS
 
 ### Phase 1: Request Analysis
 
-Understand what the user wants to build.
+ユーザーが何を作りたいか理解する。
 
-If information is missing, use the `question` tool to ask:
-- What type of application? (web, mobile, API, etc.)
-- What are the core features?
-- Who will use it?
-- Any specific tech stack preferences?
+情報が不足している場合は `question` で確認:
+- どのタイプのアプリ? (web/mobile/API など)
+- コア機能は?
+- 誰が使う?
+- 好みの技術スタックは?
 
 ### Phase 2: Project Planning
 
-1. **Determine tech stack** based on requirements and defaults
-2. **Plan file structure** using appropriate patterns
-3. **Check existing files** with Glob to understand current workspace
+1. **技術スタックの決定** (要件とデフォルト)
+2. **ファイル構造を計画** (適切なパターン)
+3. **既存ファイルを確認** (`Glob`)
 
 ### Phase 3: Implementation
 
-After confirming requirements with the user:
+要件確認後:
 
-1. **Create project structure**
-   - Use `Write` to create necessary files
-   - Follow best practices for the chosen tech stack
-   - Use `Glob` to verify files don't conflict
+1. **プロジェクト構造の作成**
+   - `Write` で必要なファイルを作成
+   - 選定したスタックのベストプラクティスに従う
+   - `Glob` で競合確認
 
-2. **Implement core features**
-   - Use `Write` for new files
-   - Use `Edit` if updating existing files
-   - Use `Read` to check existing code before modifications
+2. **コア機能の実装**
+   - 新規ファイルは `Write`
+   - 既存ファイル更新は `Edit`
+   - 変更前に `Read`
 
-3. **Set up development**
-   - Configure package.json or equivalent
-   - Set up basic configuration files
-   - Create initial templates/components
+3. **開発セットアップ**
+   - package.json 等の設定
+   - 基本設定ファイル作成
+   - 初期テンプレート/コンポーネント作成
 
 ### Phase 4: Preview
 
-1. Check if preview server is running with `/preview` logic
-2. If not running, offer to start it
-3. Provide URL when ready
+1. `/preview` で起動確認
+2. 起動していなければ起動を提案
+3. URL を提示
 
 ## Key Principles
 
-- **Start simple**: Implement MVP features first
-- **Follow conventions**: Use existing patterns in the codebase
-- **Verify before writing**: Use `Read` and `Glob` to check existing files
-- **Test as you go**: Ensure basic functionality works
-- **Document**: Include comments for complex logic
+- **Start simple**: まず MVP
+- **Follow conventions**: 既存パターンに合わせる
+- **Verify before writing**: `Read`/`Glob` で確認
+- **Test as you go**: 基本動作を確認
+- **Document**: 複雑なロジックにコメント
 
 ## Usage Examples
 
-- `/create blog site` → Simple blog with posts
-- `/create todo app` → Task management application
-- `/create REST API` → Backend API with endpoints
-- `/create portfolio` → Personal portfolio site
+- `/create blog site` → シンプルなブログ
+- `/create todo app` → タスク管理
+- `/create REST API` → バックエンド API
+- `/create portfolio` → ポートフォリオサイト
 
 ## Output
 
-When complete, provide:
+完了時に以下を提示:
 
 ```
 ✅ Application created successfully!
@@ -86,4 +86,4 @@ When complete, provide:
 Any modifications needed?
 ```
 
-Build the application step by step, ensuring quality at each phase.
+品質を担保しつつ段階的に構築する。

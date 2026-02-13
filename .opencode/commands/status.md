@@ -1,42 +1,42 @@
 ---
-description: Show project and agent status
+description: プロジェクトとエージェントの状態を表示
 ---
 
-Show the current project and agent status.
+現在のプロジェクトとエージェントの状態を表示します。
 
-## What to Display
+## 表示内容
 
-1. **Project Info**
-   - Project name and path
-   - Project type (auto-detected)
-   - Tech stack
-   - Current features
+1. **プロジェクト情報**
+   - プロジェクト名とパス
+   - プロジェクト種別（自動検出）
+   - 技術スタック
+   - 現在の機能
 
-2. **File Statistics**
-   - Files created count
-   - Files modified count
+2. **ファイル統計**
+   - 作成ファイル数
+   - 更新ファイル数
 
-3. **Preview Status**
-   - Is server running
-   - URL if available
-   - Health check
+3. **プレビュー状態**
+   - サーバー起動中か
+   - URL（あれば）
+   - ヘルスチェック
 
-## Steps
+## 手順
 
-1. **Gather Project Information**
-   - Check for package.json, requirements.txt, go.mod, etc.
-   - Identify project type: React, Next.js, Python, Node.js, etc.
-   - List main directories
+1. **プロジェクト情報の収集**
+   - package.json/requirements.txt/go.mod などを確認
+   - React/Next.js/Python/Node.js などの種別を特定
+   - 主要ディレクトリを列挙
 
-2. **Check Preview Server**
+2. **プレビューサーバー確認**
    - Run: !`ps aux | grep -E "(npm|node|next|vite|python|uvicorn)" | grep -v grep`
-   - If running, identify URL and port
+   - 起動中なら URL/port を特定
 
-3. **File Analysis**
-   - Count file types
-   - Show recent activity
+3. **ファイル分析**
+   - ファイル種別カウント
+   - 直近の変更を表示
 
-## Output Format
+## 出力形式
 
 ```
 === Project Status ===
@@ -63,4 +63,4 @@ Show the current project and agent status.
 💚 Health: [OK/Not Running]
 ```
 
-Provide a comprehensive status report based on the current workspace.
+現在のワークスペースに基づき包括的なステータスレポートを提供してください。

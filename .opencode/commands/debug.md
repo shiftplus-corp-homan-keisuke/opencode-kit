@@ -1,73 +1,73 @@
 ---
-description: Systematic problem investigation and debugging
+description: 体系的な問題調査とデバッグ
 ---
 
-You are now in DEBUG mode for systematic problem investigation.
+体系的な問題調査のための DEBUG モード。
 
 ## Task
 $ARGUMENTS
 
 ## Process
 
-### Phase 1: Gather Information
+### Phase 1: 情報収集
 
-1. **Understand the symptom**
-   - What error message?
-   - What was the user doing?
-   - What was expected vs actual behavior?
+1. **症状を理解**
+   - エラーメッセージは?
+   - ユーザーは何をしていた?
+   - 期待値と実際の差は?
 
-2. **Check recent changes**
+2. **最近の変更確認**
    - Run: !`git log --oneline -10`
    - Run: !`git diff HEAD~1`
-   - Identify what changed recently
+   - 直近で何が変わったか把握
 
-3. **Examine the code**
-   - Use `Grep` to search for error messages
-   - Use `Read` to examine relevant files
-   - Check for common issues
+3. **コード確認**
+   - `Grep` でエラーメッセージ検索
+   - `Read` で関連ファイル確認
+   - よくある問題の確認
 
-### Phase 2: Form Hypotheses
+### Phase 2: 仮説化
 
-List possible causes in order of likelihood:
+原因の可能性を高い順に列挙:
 
 1. **Most likely cause** - [explanation]
 2. **Second possibility** - [explanation]
 3. **Less likely cause** - [explanation]
 
-### Phase 3: Investigate Systematically
+### Phase 3: 体系的調査
 
-Test each hypothesis:
+仮説ごとに検証:
 
-1. **Check logs**
+1. **ログ確認**
    - Run: !`tail -f logs/*.log 2>/dev/null || echo "No logs found"`
    - Run: !`journalctl -u service-name -n 50 2>/dev/null || echo "No journal logs"`
 
-2. **Validate data flow**
-   - Trace the code path
-   - Check input/output at each step
-   - Use `Read` to examine intermediate states
+2. **データフロー検証**
+   - コードパスを追跡
+   - 入出力を各段階で確認
+   - `Read` で中間状態を確認
 
-3. **Test fixes locally**
-   - Use `Edit` to apply potential fixes
-   - Test each fix independently
-   - Use elimination method
+3. **ローカルで修正テスト**
+   - `Edit` で暫定修正を適用
+   - 修正ごとに独立検証
+   - 消去法で切り分け
 
-### Phase 4: Fix and Prevent
+### Phase 4: 修正と予防
 
-1. **Apply the correct fix**
-   - Use `Edit` to fix the issue
-   - Verify the fix works
-   - Check for side effects
+1. **正しい修正を適用**
+   - `Edit` で修正
+   - 修正が有効か確認
+   - 副作用を確認
 
-2. **Explain root cause**
-   - Why did this happen?
-   - What was the actual problem?
+2. **根本原因の説明**
+   - なぜ起きた?
+   - 実際の原因は?
 
-3. **Add prevention measures**
-   - Add validation
-   - Write tests
-   - Update documentation
-   - Suggest code improvements
+3. **再発防止策**
+   - バリデーション追加
+   - テスト追加
+   - ドキュメント更新
+   - コード改善提案
 
 ## Output Format
 
@@ -108,11 +108,11 @@ Test each hypothesis:
 
 ## Key Principles
 
-- **Ask before assuming** - get full error context
-- **Test hypotheses** - don't guess randomly
-- **Explain why** - not just what to fix
-- **Prevent recurrence** - add tests, validation
-- **Document** - leave clear comments
+- **Ask before assuming** - 完全な状況を先に取得
+- **Test hypotheses** - 推測で進めない
+- **Explain why** - 何を直すかだけでなく理由も
+- **Prevent recurrence** - テスト/バリデーション追加
+- **Document** - 明確なコメントを残す
 
 ## Usage Examples
 
@@ -121,4 +121,4 @@ Test each hypothesis:
 - `/debug form doesn't submit`
 - `/debug data not saving to database`
 
-Investigate systematically and provide lasting solutions.
+体系的に調査し、再発しない解決策を提供する。

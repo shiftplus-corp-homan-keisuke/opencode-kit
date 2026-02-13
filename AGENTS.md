@@ -1,219 +1,219 @@
-# OpenCode Workspace Configuration
+# OpenCode ワークスペース設定
 
-## Overview
+## 概要
 
-This workspace uses OpenCode's native agent, skill, and command system.
+このワークスペースは OpenCode のネイティブ エージェント、スキル、およびコマンド システムを使用します。
 
 ---
 
-## 📁 Directory Structure
+## 📁 ディレクトリ構造
 
 ```
 .opencode/
-├── agents/              # 20 specialist agents
-│   ├── orchestrator.md (primary)
-│   ├── project-planner.md (primary)
-│   └── [18 subagents]
-├── skills/              # 47 domain-specific skills
+├── agents/              # 20の専門エージェント
+│   ├── orchestrator.md (プライマリ)
+│   ├── project-planner.md (プライマリ)
+│   └── [18のサブエージェント]
+├── skills/              # 47のドメイン特化スキル
 │   ├── nextjs-react-expert/
 │   ├── clean-code/
-│   └── [45 more]
-├── commands/            # 11 custom commands
+│   └── [45のその他]
+├── commands/            # 11のカスタム コマンド
 │   ├── create.md
 │   ├── debug.md
-│   └── [9 more]
-├── scripts/             # Utility scripts
+│   └── [9のその他]
+├── scripts/             # ユーティリティ スクリプト
 │   ├── auto_preview.py
 │   ├── checklist.py
 │   ├── verify_all.py
 │   └── session_manager.py
-└── README.md            # Command documentation
+└── README.md            # コマンド ドキュメント
 ```
 
 ---
 
-## 🤖 Agent & Skill Protocol
+## 🤖 エージェントとスキルのプロトコル
 
-### Skill Loading (OpenCode Native)
+### スキル読み込み (OpenCode ネイティブ)
 
-OpenCode automatically discovers skills from `.opencode/skills/*/SKILL.md`. Agents use the `skill` tool to load relevant skills on-demand.
+OpenCode は `.opencode/skills/*/SKILL.md` からスキルを自動検出します。エージェントは `skill` ツールを使って必要に応じて関連スキルを読み込みます。
 
-**Loading a skill**:
+**スキルの読み込み**:
 ```
-Use the skill tool to load nextjs-react-expert
+skill ツールを使って nextjs-react-expert を読み込みます
 ```
 
-**Automatic discovery**: Skills are listed in the `skill` tool description. Agents can see available skills and load them when relevant.
+**自動検出**: スキルは `skill` ツールの説明にリストされています。エージェントは利用可能なスキルを確認し、関連する時に読み込むことができます。
 
-### Agent Selection
+### エージェントの選択
 
-**Primary Agents** (use **Tab** key to cycle):
-- `@orchestrator` - Multi-agent coordination for complex tasks
-- `@project-planner` - Task breakdown and planning
+**プライマリ エージェント** ( **Tab** キーでサイクル):
+- `@orchestrator` - 複雑なタスクのためのマルチエージェント調整
+- `@project-planner` - タスクの分解と計画
 
-**Subagents** (mention with `@`):
-- `@frontend-specialist` - React/Next.js/UI development
-- `@backend-specialist` - Node.js/Python/API development
-- `@database-architect` - Database schema design
-- `@security-auditor` - Security review
-- `@test-engineer` - Testing strategy
-- `@devops-engineer` - Deployment/CI/CD
-- `@debugger` - Systematic debugging
-- `@performance-optimizer` - Performance optimization
-- [Full list in `.opencode/agents/`]
+**サブエージェント** (`@` でメンション):
+- `@frontend-specialist` - React/Next.js/UI 開発
+- `@backend-specialist` - Node.js/Python/API 開発
+- `@database-architect` - データベース スキーマ設計
+- `@security-auditor` - セキュリティ レビュー
+- `@test-engineer` - テスト戦略
+- `@devops-engineer` - デプロイ/CI/CD
+- `@debugger` - 体系的デバッグ
+- `@performance-optimizer` - パフォーマンス最適化
+- [完整列表在 `.opencode/agents/`]
 
-**Note**: OpenCode uses `@mentions` for explicit agent selection. The system will auto-suggest agents based on your request context.
+**注**: OpenCode は明示的なエージェント選択に `@mentions` を使用します。システムはリクエスト コンテキストに基づいてエージェントを自動提案します。
 
 ---
 
-## 📥 Request Classification
+## 📥 リクエスト分類
 
-| Type | Triggers | Action |
+| タイプ | トリガー | アクション |
 |------|----------|--------|
-| **Question** | "what is", "how does", "explain" | Direct answer |
-| **Survey** | "analyze", "list files", "overview" | Use `@explore` or `@explorer-agent` |
-| **Simple Code** | "fix", "add" (single file) | Direct edit |
-| **Complex Code** | "build", "create", "implement" | Use `/orchestrate` command or `@project-planner` |
-| **Design** | "design", "UI", "dashboard" | Use `/ui-ux-pro-max` command |
-| **Debug** | "bug", "error", "not working" | Use `/debug` command |
-| **Test** | "test", "coverage" | Use `/test` command |
-| **Deploy** | "deploy", "production" | Use `/deploy` command |
+| **質問** | "what is", "how does", "explain" | 直接回答 |
+| **調査** | "analyze", "list files", "overview" | `@explore` または `@explorer-agent` を使用 |
+| **単純なコード** | "fix", "add" (単一ファイル) | 直接編集 |
+| **複雑なコード** | "build", "create", "implement" | `/orchestrate` コマンドまたは `@project-planner` を使用 |
+| **デザイン** | "design", "UI", "dashboard" | `/ui-ux-pro-max` コマンドを使用 |
+| **デバッグ** | "bug", "error", "not working" | `/debug` コマンドを使用 |
+| **テスト** | "test", "coverage" | `/test` コマンドを使用 |
+| **デプロイ** | "deploy", "production" | `/deploy` コマンドを使用 |
 
 ---
 
-## 🎯 Universal Rules (Always Active)
+## 🎯 ユニバーサル ルール (常時有効)
 
-### Language Handling
+### 言語 handling
 
-When user's prompt is NOT in English:
-1. Internally translate for better comprehension
-2. Respond in user's language - match their communication
-3. Code comments/variables remain in English
+ユーザーのプロンプトが英語でない場合:
+1. 内部で翻訳して理解を深める
+2. ユーザーの言語で応答 - コミュニケーションに合わせる
+3. コード コメント/変数は英語のまま
 
-**Japanese Language Settings**:
-When user's prompt is in Japanese:
-- **Responses**: Output in Japanese
-- **Thought process**: Think and reason in Japanese
-- **Plans and tasks**: Create all artifacts (plans, todo lists, documentation) in Japanese
-- **Code comments/variables**: Remain in English
+**日本語設定**:
+ユーザーのプロンプトが日本語の場合:
+- **応答**: 日本語で出力
+- **思考プロセス**: 日本語で思考と推論
+- **計画とタスク**: すべての成果物(計画、ToDo リスト、ドキュメント)を日本語で作成
+- **コード コメント/変数**: 英語のまま
 
-### Clean Code (Global Mandatory)
+### クリーン コード (グローバル必須)
 
-**ALL code MUST follow `clean-code` skill rules.** Load it with:
+**すべてのコードは `clean-code` スキル ルールに従う必要があります。** 次のように読み込みます:
 ```
 skill({ name: "clean-code" })
 ```
 
-**Core principles**:
-- **Code**: Concise, direct, no over-engineering. Self-documenting.
-- **Testing**: Mandatory. Pyramid (Unit > Int > E2E) + AAA Pattern.
-- **Performance**: Measure first. Adhere to 2025 standards (Core Web Vitals).
-- **Safety**: Verify secrets security before deployment.
+**コア原則**:
+- **コード**: 簡潔、直接的、過度なエンジニアリングなし。自己文書化。
+- **テスト**: 必須。ピラミッド (単体 > 結合 > E2E) + AAA パターン。
+- **パフォーマンス**: 最初に測定。2025年標準 (Core Web Vitals) に準拠。
+- **セキュリティ**: デプロイ前にシークレット セキュリティを検証。
 
-### Read → Understand → Apply
+### 読む → 理解する → 適用
 
 ```
-❌ WRONG: Read agent file → Start coding
-✅ CORRECT: Read → Understand WHY → Apply PRINCIPLES → Code
+❌ 間違い: エージェント ファイルを読む → コーディング開始
+✅ 正解: 読む → WHY を理解 → 原則を適用 → コード
 ```
 
-**Before coding, answer**:
-1. What is the GOAL of this agent/skill?
-2. What PRINCIPLES must I apply?
-3. How does this DIFFER from generic output?
+**コーディング前に答える**:
+1. このエージェント/スキルの**目標**は何か？
+2. どの**原則**を適用すべきか？
+3. これは汎用出力とどう**異なる**か？
 
 ---
 
-## 🔧 Available Commands
+## 🔧 利用可能なコマンド
 
-Type `/` in OpenCode TUI to access custom commands:
+OpenCode TUI で `/` とタイプしてカスタム コマンドにアクセス:
 
-| Command | Description |
+| コマンド | 説明 |
 |---------|-------------|
-| `/status` | Show project and agent status |
-| `/preview [start|stop|restart]` | Manage preview server |
-| `/brainstorm [topic]` | Structured idea exploration |
-| `/plan [task]` | Create project plan |
-| `/create [app]` | Build new application |
-| `/enhance [feature]` | Add features to existing app |
-| `/debug [issue]` | Debug problems |
-| `/test [file|coverage]` | Generate/run tests |
-| `/deploy [check|preview|prod]` | Deploy to production |
-| `/orchestrate [task]` | Coordinate multiple agents |
-| `/ui-ux-pro-max [query]` | Design system recommendations |
+| `/status` | プロジェクトとエージェントの状態を表示 |
+| `/preview [start|stop|restart]` | プレビュー サーバーを管理 |
+| `/brainstorm [topic]` | 構造化されたアイデア探索 |
+| `/plan [task]` | プロジェクト計画を作成 |
+| `/create [app]` | 新しいアプリケーションを構築 |
+| `/enhance [feature]` | 既存のアプリに機能を追加 |
+| `/debug [issue]` | 問題をデバッグ |
+| `/test [file|coverage]` | テストを生成/実行 |
+| `/deploy [check|preview|prod]` | 本番環境にデプロイ |
+| `/orchestrate [task]` | 複数のエージェントを調整 |
+| `/ui-ux-pro-max [query]` | デザイン システム推奨 |
 
 ---
 
-## 🎨 Available Skills (Key Skills)
+## 🎨 利用可能なスキル (主要スキル)
 
-### Frontend
-- `nextjs-react-expert` - React/Next.js optimization (57 rules)
-- `tailwind-patterns` - Tailwind CSS utilities
-- `web-design-guidelines` - UI/UX audit (100+ rules)
-- `frontend-design` - Design systems and components
+### フロントエンド
+- `nextjs-react-expert` - React/Next.js 最適化 (57ルール)
+- `tailwind-patterns` - Tailwind CSS ユーティリティ
+- `web-design-guidelines` - UI/UX 監査 (100+ルール)
+- `frontend-design` - デザイン システムとコンポーネント
 
-### Backend
-- `api-patterns` - REST/GraphQL/tRPC patterns
-- `database-design` - Schema optimization
-- `python-patterns` - Python standards
-- `nodejs-best-practices` - Node.js best practices
+### バックエンド
+- `api-patterns` - REST/GraphQL/tRPC パターン
+- `database-design` - スキーマ最適化
+- `python-patterns` - Python 標準
+- `nodejs-best-practices` - Node.js ベスト プラクティス
 
-### Testing & Quality
-- `testing-patterns` - Jest/Vitest/pytest strategies
-- `systematic-debugging` - 4-phase debugging methodology
-- `vulnerability-scanner` - Security auditing
-- `clean-code` - Pragmatic coding standards
+### テストと品質
+- `testing-patterns` - Jest/Vitest/pytest 戦略
+- `systematic-debugging` - 4フェーズ デバッグ手法
+- `vulnerability-scanner` - セキュリティ 監査
+- `clean-code` - 実用的コーディング標準
 
-### Development Workflow
-- `brainstorming` - Socratic questioning protocol
-- `plan-writing` - Task planning and breakdown
-- `tdd-workflow` - Test-driven development
+### 開発ワークフロー
+- `brainstorming` - ソクラテス式質問 プロトコル
+- `plan-writing` - タスク計画と分解
+- `tdd-workflow` - テスト駆動開発
 
-**Full list**: See `.opencode/skills/` directory (48 skills)
+**完整列表**: `.opencode/skills/` ディレクトリ参照 (48スキル)
 
 ---
 
-## 🚀 Quick Start Examples
+## 🚀 クイック スタート例
 
-### Start a New Project
+### 新しいプロジェクトを開始
 ```
 /plan e-commerce site with cart
-# Review plan, then:
+# 計画をレビューしてから:
 /create todo app
 ```
 
-### Debug an Issue
+### 問題をデバッグ
 ```
 /debug API returns 500 error
 ```
 
-### Add a Feature
+### 機能を追加
 ```
 /enhance add dark mode
 ```
 
-### Design UI
+### UI をデザイン
 ```
 /ui-ux-pro-max fintech dashboard modern
 ```
 
-### Multi-Agent Coordination
+### マルチエージェント調整
 ```
 /orchestrate build full-stack app with authentication, database, and testing
 ```
 
 ---
 
-## 🛠️ Utility Scripts
+## 🛠️ ユーティリティ スクリプト
 
-Located in `.opencode/scripts/`:
+場所: `.opencode/scripts/`:
 
-- **auto_preview.py** - Preview server management
-- **checklist.py** - Core validation checks
-- **verify_all.py** - Comprehensive verification
-- **session_manager.py** - Session management
+- **auto_preview.py** - プレビュー サーバー管理
+- **checklist.py** - コア検証チェック
+- **verify_all.py** - 包括的検証
+- **session_manager.py** - セッション管理
 
-**Usage from commands**:
+**コマンドからの使用方法**:
 ```bash
 python3 .opencode/scripts/auto_preview.py start
 python3 .opencode/scripts/checklist.py .
@@ -221,7 +221,7 @@ python3 .opencode/scripts/checklist.py .
 
 ---
 
-## 🔗 References
+## 🔗 参考文献
 
 - **OpenCode Docs**: https://opencode.ai/docs/
 - **Commands Reference**: `.opencode/README.md`
@@ -230,4 +230,4 @@ python3 .opencode/scripts/checklist.py .
 
 ---
 
-**End of AGENTS.md**
+**AGENTS.md 終了**
