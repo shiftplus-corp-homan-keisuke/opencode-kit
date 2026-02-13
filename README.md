@@ -1,252 +1,154 @@
-# OpenCode コマンド
+# OpenCode Kit
 
-OpenCode TUI のカスタムコマンド、`.agent/workflows/` システムから変換されました。
+![Version](https://img.shields.io/badge/version-1.0-blue)
+![Status](https://img.shields.io/badge/status-active-success)
 
-## 利用可能なコマンド
+## 概要
 
-| コマンド | 説明 | エージェント | サブタスク |
-|---------|-------------|-------|---------|
-| `/status` | プロジェクトとエージェントの状態を表示 | - | - |
-| `/preview` | プレビューサーバー管理 (start/stop/restart) | - | - |
-| `/brainstorm` | プロジェクト向けの構造化されたブレインストーミング | - | - |
-| `/plan` | タスク分解を含むプロジェクト計画の作成 | general | ✅ |
-| `/create` | 新しいアプリケーションの作成 | general | ✅ |
-| `/enhance` | 既存のアプリケーションに機能を追加 | general | ✅ |
-| `/debug` | 体系的な問題調査 | - | - |
-| `/test` | テストの生成と実行 | - | - |
-| `/deploy` | 事前チェック付きの本番デプロイメント | - | - |
-| `/orchestrate` | 複雑なタスクのための複数エージェントの調整 | general | ✅ |
-| `/ui-ux-pro-max` | 50以上のスタイルを持つAI搭載デザインシステム | - | - |
+OpenCode Kit は、AI ネイティブ エージェント、スキル、およびコマンドシステムを使用した包括的な開発ワークスペースです。
 
-## 使用方法
+### システム構成
 
-### 基本的な使用法
+- ✅ **48 個のスキル** / 48 domain-specific skills
+- ✅ **21 個のエージェント** / 21 specialist agents
+- ✅ **12 個のコマンド** / 12 custom commands
+- ✅ **ユーティリティ スクリプト** / Utility scripts
 
-OpenCode TUI で `/` を入力し、コマンド名を続けて入力します：
+## ディレクトリ構造
+
+```
+.
+├── README.md                   # このファイル / This file
+├── AGENTS.md                   # プロジェクト ルール / Project rules
+├── opencode.json               # OpenCode 設定ファイル / Config
+│
+└── .opencode/                  # OpenCode ネイティブ設定 / Native config
+    ├── agents/                 # 21 エージェント / 21 agents
+    │   ├── orchestrator.md      # マルチエージェント調整
+    │   ├── project-planner.md   # タスク計画
+    │   ├── frontend-specialist.md
+    │   ├── backend-specialist.md
+    │   └── [18 その他 / 18 more]
+    │
+    ├── skills/                 # 48 スキル / 48 skills
+    │   ├── nextjs-react-expert/    # React/Next.js 最適化
+    │   ├── clean-code/             # コーディング標準
+    │   ├── tailwind-patterns/      # Tailwind CSS
+    │   ├── api-patterns/           # REST/GraphQL/tRPC
+    │   ├── database-design/        # スキーマ設計
+    │   ├── testing-patterns/       # テスト戦略
+    │   └── [42 その他 / 42 more]
+    │
+    ├── commands/               # 12 コマンド / 12 commands
+    │   ├── create.md            # 新しいアプリ作成
+    │   ├── debug.md             # デバッグ
+    │   ├── deploy.md            # デプロイ
+    │   ├── test.md              # テスト
+    │   ├── orchestrate.md       # マルチエージェント調整
+    │   └── [7 その他 / 7 more]
+    │
+    ├── scripts/                # Python スクリプト / Python scripts
+    │   ├── auto_preview.py
+    │   ├── checklist.py
+    │   └── verify_all.py
+    │
+    └── README_JA.md            # 詳細なドキュメント（日本語）
+```
+
+## クイック スタート
+
+### 1. OpenCode を起動
+
+```bash
+opencode
+```
+
+### 2. ステータスを確認
 
 ```
 /status
-/preview start
-/brainstorm authentication system
-/create todo app
-/debug API returns 500 error
-/test src/services/auth.ts
-/deploy
 ```
 
-### 引数付きコマンド
-
-多くのコマンドは `$ARGUMENTS` を使用して引数を受け取ります：
+### 3. 最初のコマンドを試す
 
 ```
-/plan e-commerce site with cart
-/create blog site with markdown support
-/enhance add dark mode
-/debug login not working
-/test user registration flow
-/ui-ux-pro-max fintech dashboard modern
+/plan simple-project
 ```
 
-### サブコマンド
+## 主な機能
 
-一部のコマンドはサブコマンドをサポートしています：
+### コマンド (12 個)
 
-```
-/preview [start|stop|restart|check]
-/deploy [check|preview|production|rollback]
-/test [coverage|watch]
-```
+| コマンド | 説明 |
+|---------|-------------|
+| `/status` | プロジェクトの状態を表示 |
+| `/plan` | タスク計画を作成 |
+| `/create` | 新しいアプリケーションを構築 |
+| `/enhance` | 既存のアプリに機能を追加 |
+| `/debug` | 問題をデバッグ |
+| `/test` | テストを実行 |
+| `/deploy` | 本番環境にデプロイ |
+| `/preview` | プレビュー サーバーを管理 |
+| `/brainstorm` | アイデアを探索 |
+| `/orchestrate` | マルチエージェントを調整 |
+| `/ui-ux-pro-max` | UI/UX をデザイン |
 
-## コマンド詳細
+### エージェント (21 個)
 
-### `/status` - プロジェクトステータス
+**プライマリ エージェント** (Tab キーで切り替え):
+- `@orchestrator` - マルチエージェント調整
+- `@project-planner` - タスク分解と計画
 
-現在のプロジェクト情報を表示します：
-- プロジェクト名と種類
-- テックスタック
-- 実行中のプレビューサーバー
-- ファイル統計
+**スペシャリスト** (@ で呼び出し):
+- `@frontend-specialist` - React/Next.js/UI
+- `@backend-specialist` - Node.js/Python/API
+- `@database-architect` - データベース設計
+- `@security-auditor` - セキュリティ レビュー
+- `@test-engineer` - テスト戦略
+- `@devops-engineer` - CI/CD
+- [他 15 個 / 15 more]
 
-### `/preview` - プレビューサーバー管理
+### スキル (48 個)
 
-開発プレビューサーバーを管理します：
-- `/preview` - 現在のステータスを表示
-- `/preview start` - サーバーを起動
-- `/preview stop` - サーバーを停止
-- `/preview restart` - サーバーを再起動
-- `/preview check` - ヘルスチェック
+**フロントエンド**:
+- `nextjs-react-expert` - React/Next.js 最適化 (57 ルール)
+- `tailwind-patterns` - Tailwind CSS
+- `web-design-guidelines` - UI/UX 監査 (100+ ルール)
 
-自動検出：
-- Next.js (npm run dev)
-- Vite (npm run dev)
-- Python/FastAPI (uvicorn)
-- Python/Flask (flask run)
+**バックエンド**:
+- `api-patterns` - REST/GraphQL/tRPC
+- `database-design` - スキーマ設計
+- `python-patterns` / `nodejs-best-practices`
 
-### `/brainstorm` - 構造化されたブレインストーミング
+**テストと品質**:
+- `testing-patterns` - Jest/Vitest/pytest
+- `systematic-debugging` - デバッグ手法
+- `clean-code` - コーディング標準
 
-実装前に複数の選択肢を探求：
-- 3つ以上のアプローチと長所/短所を提供
-- 作業レベルを見積もり
-- 最適なアプローチを推奨
-- コードは書かず、アイデアのみ
+## ドキュメント
 
-### `/plan` - プロジェクト計画
+詳細なドキュメントは [`.opencode/`](./.opencode/) ディレクトリを参照してください。
 
-詳細なプロジェクト計画を作成：
-- 要件を分析
-- 必要に応じて明確化のための質問
-- `docs/PLAN-{slug}.md` を作成
-- 段階的なタスク分解
-- コードは書かず、計画のみ
+| ドキュメント | 説明 |
+|-----------|-------------|
+| [`.opencode/README_JA.md`](./.opencode/README_JA.md) | 詳細な使い方（バイリンガル） |
+| [`AGENTS.md`](./AGENTS.md) | プロジェクト ルールとガイドライン |
 
-### `/create` - アプリケーション作成
+## システム要件
 
-ゼロから新しいアプリケーションを構築：
-- 対話的な要件収集
-- テックスタック選択
-- プロジェクト構造作成
-- コア機能実装
-- プレビュー設定
+- **OpenCode**: 最新版 / Latest version
+- **Node.js**: 18+ (推奨 / recommended)
+- **Python**: 3.8+ (スクリプト実行用 / for scripts)
+- **OS**: Linux, macOS, Windows
 
-### `/enhance` - 機能追加
+## 参考文献
 
-既存のアプリケーションを更新：
-- 現在のコードベースを分析
-- 変更を計画
-- 新規ファイルを作成
-- 既存のコードを更新
-- 一貫性を維持
+- **OpenCode Docs**: https://opencode.ai/docs/
+- **GitHub**: https://github.com/anomalyco/opencode
+- **Community**: https://opencode.ai/discord
 
-### `/debug` - デバッグ
+---
 
-体系的な問題調査：
-- エラー文脈を収集
-- 最近の変更を確認
-- 仮説を形成
-- 体系的テスト
-- 修正を適用
-- 予防策を追加
-
-### `/test` - テスト
-
-テストを生成・実行：
-- `/test` - 全テストを実行
-- `/test [file]` - ファイルのテストを生成
-- `/test coverage` - カバレッジレポートを表示
-- Jest, Vitest, pytest, Go test をサポート
-
-### `/deploy` - デプロイ
-
-安全な本番デプロイ：
-- 事前チェック (lint, test, build, security)
-- プラットフォーム検出 (Vercel, Railway, Fly, Docker)
-- デプロイ実行
-- ヘルス検証
-- ロールバックサポート
-
-### `/orchestrate` - マルチエージェント調整
-
-複�雑なタスクのために複数エージェントを調整：
-- 最低3つの並列タスク
-- 2段階アプローチ (計画 → 実装)
-- ユーザー承認ゲート
-- 包括的なレポート
-
-### `/ui-ux-pro-max` - デザインシステム
-
-AI搭載デザイン推奨：
-- 50以上のUIスタイル
-- 97種のカラーパレット
-- 57のフォントペアリング
-- 99のUXガイドライン
-- 25種のチャートタイプ
-- 9つのテックスタック
-
-## ツールマッピング
-
-| 元のワークフロー | OpenCode ツール |
-|------------------|----------------|
-| Python スクリプト | ``!`command` `` (shell 出力) |
-| エージェント呼出し | `task` ツール |
-| ファイル検索 | `glob`, `grep` |
-| ファイル読取 | `read` |
-| ファイル書込 | `write` |
-| ファイル編集 | `edit` |
-| 質問 | `question` ツール |
-| タスク追跡 | `todowrite` ツール |
-
-## 機能
-
-### シェルコマンド実行
-
-コマンドはシェルコマンドを実行し、出力を含めることができます：
-
-```bash
-!`npm test`
-!`ps aux | grep node`
-!`git log --oneline -10`
-```
-
-### ファイル参照
-
-ファイル内容を自動的に含める：
-
-```markdown
-@src/components/Button.tsx のコンポーネントをレビュー
-```
-
-### 位置引数
-
-個別の引数にアクセス：
-
-```markdown
-$1 - 第1引数
-$2 - 第2引数
-$3 - 第3引数
-```
-
-## アーキテクチャ
-
-```
-.opencode/
-└── commands/
-    ├── brainstorm.md       # アイデア探索
-    ├── create.md           # アプリ作成
-    ├── debug.md            # 問題調査
-    ├── deploy.md           # デプロイ
-    ├── enhance.md          # 機能追加
-    ├── orchestrate.md      # マルチエージェントタスク
-    ├── plan.md             # プロジェクト計画
-    ├── preview.md          # サーバー管理
-    ├── status.md           # ステータス表示
-    ├── test.md             # テスト
-    └── ui-ux-pro-max.md    # デザインシステム
-```
-
-## ベストプラクティス
-
-1. **複�雑な機能は `/plan` から開始**
-2. **アプローチ決定前に `/brainstorm` を使用**
-3. **現状理解のために `/status` を確認**
-4. **`/deploy` 前に `/test` を実行**
-5. **マルチドメインタスクは `/orchestrate` を使用**
-6. **デザインガイダンスに `/ui-ux-pro-max` を適用**
-
-## 移行ノート
-
-これらのコマンドは `.agent/workflows/` システムから変換されました：
-
-- ✅ 全ての元の機能を維持
-- ✅ OpenCode のネイティブツールに適応
-- ✅ OpenCode のコマンド構文を使用
-- ✅ シェルコマンド実行をサポート
-- ✅ ファイル参照と引数
-- ⚠️  一部の Python スクリプトは維持 (例: ui-ux-pro-max)
-- ⚠️  エージェントシステムは OpenCode モデルに簡素化
-
-## サポート
-
-問題や質問がある場合：
-- OpenCode ドキュメントを確認: https://opencode.ai/docs/commands/
-- 元のワークフローをレビュー: `.agent/workflows/`
-- 最初にコマンドを個別にテスト
+**バージョン**: 1.0  
+**最終更新**: 2026-02-13  
+**ライセンス**: MIT License
